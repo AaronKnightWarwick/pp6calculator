@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Day2Menu.cpp
+PP6Day2Menu.hpp
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Day2Menu.hpp
+iostream
+-
+cmath
+-
+PP6Math.hpp
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Math.hpp
+PP6Day2VectorAnalysis.hpp
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Day2VectorAnalysis.hpp
+PP6Day2MuonAnalysis.hpp
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Day2MuonAnalysis.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Day2Menu.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Day2MuonAnalysis.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Day2VectorAnalysis.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calcualtor.git/PP6Lib/PP6Math.hpp
+string
+-
+
