@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day1Menu.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day2Menu.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day3Menu.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day4Menu.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/pp6calculator.cpp
+iostream
+-
+limits
+-
+PP6Day1Menu.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Day1Menu.hpp
+PP6Day2Menu.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Day2Menu.hpp
+PP6Day3Menu.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Day3Menu.hpp
+PP6Day4Menu.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Day4Menu.hpp
+

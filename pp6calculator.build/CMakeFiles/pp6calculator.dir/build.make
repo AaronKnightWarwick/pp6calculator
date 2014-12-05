@@ -85,6 +85,7 @@ pp6calculator_EXTERNAL_OBJECTS =
 pp6calculator: CMakeFiles/pp6calculator.dir/pp6calculator.cpp.o
 pp6calculator: CMakeFiles/pp6calculator.dir/build.make
 pp6calculator: PP6Lib/libpp6lib.a
+pp6calculator: FileReader/libFileReader.a
 pp6calculator: CMakeFiles/pp6calculator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable pp6calculator"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/pp6calculator.dir/link.txt --verbose=$(VERBOSE)

@@ -51,6 +51,7 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unsp
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   INCLUDE("/home/epp/phrhzv/mpagspp6/pp6calculator.build/PP6Lib/cmake_install.cmake")
+  INCLUDE("/home/epp/phrhzv/mpagspp6/pp6calculator.build/FileReader/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 

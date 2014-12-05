@@ -1,5 +1,5 @@
-//----------PP6Math----------
-//----------=======----------
+//----------PP6 Math----------
+//----------========----------
 
 #include "PP6Math.hpp"
 
@@ -11,11 +11,8 @@
 #include <cmath>
 #include <cstdlib>
 
-//----------Functions----------
-//----------=========----------
-
-//----------Arithmetic----------
-//----------==========----------
+//----------Arithmetic Operations----------
+//----------=====================----------
 
 int add(double a, double b, double& answer){
   answer = a + b;
@@ -43,67 +40,34 @@ int divide(double a, double b, double& answer){
 
 //----------Intercept----------
 //----------=========----------
-//NOT WORKING
-//double intercept(double x1, double x2, double y1, double y2, double m){
-//  std::cout << "Enter a value for x1: " << std::endl;
-//  std::cin >> x1;
-//  std::cout << "Enter a value for x2: " << std::endl;
-//  std::cin >> x2;
-//  std::cout << "Enter a value for y1: " << std::endl;
-//  std::cin >> y1;
-//  std::cout << "Enter a value for y2: " << std::endl;
-//  std::cin >> y2;
-//  m = (y2-y1)/(x2-x1);
-//  double y_intercept = y1 - m*x1;
-//  double x_intercept = -y_intercept/m;
-//  std::cout << "The gradient of the line is " << m << std::endl;
-//  std::cout << "The y-intercept of the line is " << y_intercept << std::endl;
-//  std::cout << "The x-intercept of the line is " << x_intercept << std::endl;
-//}
-//Still not working
-/*double intercept(double x1, double x2, double y1, double y2, double m){
-  std::cout << "Enter a value for x1: ";
-  x1 = input();
-  std::cout << "Enter a value for x2: ";
-  x2 = input();
-  std::cout << "Enter a value for y1: ";
-  y1 = input();
-  std::cout << "Enter a value for y2: ";
-  y2 = input();
 
-  m = (y2 - y1)/(x1 - x2);
-
-  double y_intercept = y1-m*x1;
-  double x_intercept = -y_intercept/m;
-
-  std::cout << "The gradient of the line is: " << m << std::endl;
-  std::cout << "The y-intercept of the line is: " << y_intercept << std::endl;
-  std::cout << "The x-intercept of the line is: " << x_intercept << std::endl;
-  }*/
+int intercept(double m, double c, double& answer){
+  return divide(-c, m, answer);
+}
 
 //----------Quadratic----------
 //----------=========----------
 
-int quadratic(double a, double b, double c, double& positive_root,
-	      double& negative_root){
+int quadratic(double a, double b, double c, double& positiveRoot,
+              double& negativeRoot){
   if(a == 0){
     return 1;
   }
 
-  double discriminant(pow(b, 2) - 4 * a * c);
+  double t(pow(b, 2) - 4 * a * c);
 
-  if(discriminant < 0){
+  if(t < 0){
     return 2;
   }
 
-  positive_root = (-b + sqrt(discriminant)) / (2 * a);
-  negative_root = (-b - sqrt(discriminant)) / (2 * a);
-  
+  positiveRoot = (-b + sqrt(t)) / (2 * a);
+  negativeRoot = (-b - sqrt(t)) / (2 * a);
+
   return 0;
 } 
 
-//----------Statistics----------
-//----------==========----------
+//----------Statistical Operations----------
+//----------======================----------
 
 int getMeanAndStdDev(double *x, int size, double& mean, double& stddev){
   if(!x) return 1;
@@ -112,39 +76,42 @@ int getMeanAndStdDev(double *x, int size, double& mean, double& stddev){
   for(int i(0); i < size; ++i){
     mean += x[i];
   }
-   
+
   mean /= size;
-   
+
   stddev = 0;
   for(int i(0); i < size; ++i){
     stddev += (x[i] - mean) * (x[i] - mean);
   }
-   
+
   stddev /= size;
   stddev = sqrt(stddev);
-  
+
   return 0;
 }
 
-double length(double x, double y, double z, double& vectorlength){
-  vectorlength = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+//----------Vector Operations----------
+//----------=================----------
+
+double length(double x, double y, double z, double& vectorLength){
+  vectorLength = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
   return 0;
 }
 
-double length(double t, double x, double y, double z, double& vectorlength){
-  double spacelength;
-  if(length(x, y, z, spacelength)){
+double length(double t, double x, double y, double z, double& vectorLength){
+  double spaceLength(0);
+  if(length(x, y, z, spaceLength)){
     return 1;
   }
-  
-  double timesquared(pow(t, 2));
-  double spacesquared(pow(spacelength, 2));
 
-  if(timesquared < spacesquared){
+  double timeSquared(pow(t, 2));
+  double spaceSquared(pow(spaceLength, 2));
+
+  if(timeSquared < spaceSquared){
     return 2;
   }
-  
-  vectorlength = sqrt(timesquared - spacesquared);
+
+  vectorLength = sqrt(timeSquared - spaceSquared);
   return 0;
 }
 
@@ -163,61 +130,60 @@ int sumVectors(double *x, double *y, double *z, int size,
     sumY += y[i];
     sumZ += z[i];
   }
-  
+
   return 0;
 }
 
 //----------Invariant Mass----------
 //----------==============----------
 
-double inv_mass(double E1, double px1, double py1, double pz1, 
-		     double E2, double px2, double py2, double pz2,
-		     double& invariantmass){
-  double tot_E(E1 + E2);
+double inv_mass(double e1, double px1, double py1, double pz1, 
+                double e2, double px2, double py2, double pz2,
+                double& invariantMass){
+  double tot_e(e1 + e2);
   double tot_px(px1 + px2);
   double tot_py(py1 + py2);
   double tot_pz(pz1 + pz2);
-  
-  if(length(tot_E, tot_px, tot_py, tot_pz, invariantmass)){
+
+  if(length(tot_e, tot_px, tot_py, tot_pz, invariantMass)){
     return 1;
   }
   return 0; 
 }
 
-//----------Swap----------
-//----------====----------
+//----------Swap Operation----------
+//----------==============----------
 
 int swap(double& a, double& b){
-  double tempnumber(a);
+  double tmp(a);
   a = b;
-  b = tempnumber;
+  b = tmp;
   return 0;
 }
 
 int swap(int& a, int& b){
-  int tempnumber(a);
+  int tmp(a);
   a = b;
-  b = tempnumber;
+  b = tmp;
   return 0;
 }
 
+//----------Sorting Algorithms----------
+//----------==================----------
 
-//----------Bubble Sort----------
-//----------===========----------
-
-int bubblesort(double *arr, int size){
+int basic_sort(double *arr, int size){
   bool done(true);
-  
+
   while(true){
     done = true;
-    
+
     for(int i = 0; i < size-1; ++i){
       if(arr[i] < arr[i+1]){
-	swap(arr[i], arr[i+1]);
-	done = false;
+        swap(arr[i], arr[i+1]);
+        done = false;
       }
     }
-    
+
     if(done){
       break;
     }
@@ -226,32 +192,34 @@ int bubblesort(double *arr, int size){
 }
 
 int associative_sort(double *arr, int *index, int size){
-  
   double *arr_t = new double[size];
   for(int i(0); i < size; i++){
     arr_t[i] = arr[i];
   }
-  
+
   bool done(true);
-  
+
   while(true){
     done = true;
-    
+
     for(int i(0); i < size-1; ++i){
       if(arr_t[i] < arr_t[i+1]){
-	swap(index[i], index[i+1]);
-	swap(arr_t[i], arr_t[i+1]);
-	done = false;
+        swap(index[i], index[i+1]);
+        swap(arr_t[i], arr_t[i+1]);
+        done = false;
       }
     }
     if(done){
       break;
     }
   }
-  
-    delete [] arr_t;
-    return 0;
+
+  delete [] arr_t;
+  return 0;
 }
+  
+//----------Other Operations----------
+//----------================----------
 
 void printArray(double *arr, int size){
   std::cout << "[array:" << arr << "]{";
@@ -261,42 +229,38 @@ void printArray(double *arr, int size){
   std::cout << arr[size - 1] << "}" << std::endl;
 }
 
-double getrandom(){
+double getRandom(){
   return (rand() % 10000)/10000.;
 }
 
-double input(){
-    double res;
-    
+double getNumber(){
+  double res(0);
+
+  std::cin >> res;
+
+  while(!std::cin){
+    std::cout << "Error in input. Please re-enter >> ";
+    std::cin.clear();
+    std::cin.ignore();
     std::cin >> res;
-  
-    while(!std::cin){
-      std::cout << "User input error " << std::endl;
-      
-      std::cin.clear();
-      std::cin.ignore();
-      
-      std::cin >> res;
-    }
-    
-    return res;
+  }
+
+  return res;
 }
 
 std::string getString(){
-  
   std::string res;
-  
+
   std::cin >> res;
-  
+
   while(!std::cin){
-    std::cout << "User input error " << std::endl;
-    
+    std::cout << "Error in input. Please re-enter >> ";
     std::cin.clear();
     std::cin.ignore();
-    
+
     std::cin >> res;
   }
-  
+
   return res;
 }
 

@@ -6,23 +6,51 @@
 
 #IncludeRegexTransform: 
 
-/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/FileReader.hpp
-
-/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day2MuonAnalysis.cpp
-PP6Day2MuonAnalysis.hpp
-/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day2MuonAnalysis.hpp
-iostream
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/FileReader/FileReader.hpp
+fstream
 -
-cmath
+sstream
+-
+string
+-
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day3MuonAnalysis.cpp
+PP6Day3MuonAnalysis.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day3MuonAnalysis.hpp
+iostream
 -
 FileReader.hpp
 /home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/FileReader.hpp
 PP6Math.hpp
 /home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Math.hpp
+PP6Particle.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Particle.hpp
 
-/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day2MuonAnalysis.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day3MuonAnalysis.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6FourVector.hpp
+string
+-
+PP6ThreeVector.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6ThreeVector.hpp
 
 /home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Math.hpp
+string
+-
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Particle.hpp
+string
+-
+vector
+-
+PP6FourVector.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6FourVector.hpp
+PP6ThreeVector.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6ThreeVector.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6ThreeVector.hpp
+iosfwd
+-
 string
 -
 

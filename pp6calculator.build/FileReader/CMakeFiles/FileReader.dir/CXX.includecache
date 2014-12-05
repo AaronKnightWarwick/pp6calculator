@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/FileReader/FileReader.cpp
+FileReader.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/FileReader/FileReader.hpp
+
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/FileReader/FileReader.hpp
+fstream
+-
+sstream
+-
+string
+-
+

@@ -9,7 +9,7 @@
 #include <string>
 
 class ParticleInfo {
-public:
+ public:
   ParticleInfo(std::string dbFile); 
   ~ParticleInfo() {} 
 
@@ -20,11 +20,11 @@ public:
   double getMassMeV(const int id) const;
   double getMassGeV(const int id) const;
 
-private:
-  ParticleInfo(const ParticleInfo&);
-  ParticleInfo& operator=(const ParticleInfo&);
+ private:
+  ParticleInfo(const ParticleInfo&); 
+  ParticleInfo& operator=(const ParticleInfo&); 
 
-private:
+ private:
 
   std::map<std::string, int> name_to_id;
   std::map<int, std::string> id_to_name;
@@ -32,5 +32,4 @@ private:
   std::map<int, double> id_to_mass;
 };
 
-#endif
-
+#endif PARTICLEINFO_HPP

@@ -204,6 +204,15 @@ CPACK_SOURCE_TZ:BOOL=ON
 CPACK_SOURCE_ZIP:BOOL=OFF
 
 //Value Computed by CMake
+FileReader_BINARY_DIR:STATIC=/home/epp/phrhzv/mpagspp6/pp6calculator.build/FileReader
+
+//Dependencies for target
+FileReader_LIB_DEPENDS:STATIC=
+
+//Value Computed by CMake
+FileReader_SOURCE_DIR:STATIC=/home/epp/phrhzv/mpagspp6/pp6calculator.git/FileReader
+
+//Value Computed by CMake
 pp6calculator_BINARY_DIR:STATIC=/home/epp/phrhzv/mpagspp6/pp6calculator.build
 
 //Value Computed by CMake
@@ -305,7 +314,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=2
+CMAKE_NUMBER_OF_LOCAL_GENERATORS:INTERNAL=3
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

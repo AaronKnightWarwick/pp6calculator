@@ -60,9 +60,10 @@ CMAKE_BINARY_DIR = /home/epp/phrhzv/mpagspp6/pp6calculator.build
 
 # All Build rule for target.
 CMakeFiles/pp6calculator.dir/all: PP6Lib/CMakeFiles/pp6lib.dir/all
+CMakeFiles/pp6calculator.dir/all: FileReader/CMakeFiles/FileReader.dir/all
 	$(MAKE) -f CMakeFiles/pp6calculator.dir/build.make CMakeFiles/pp6calculator.dir/depend
 	$(MAKE) -f CMakeFiles/pp6calculator.dir/build.make CMakeFiles/pp6calculator.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles  1
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles  2
 	@echo "Built target pp6calculator"
 .PHONY : CMakeFiles/pp6calculator.dir/all
 
@@ -72,7 +73,7 @@ all: CMakeFiles/pp6calculator.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/pp6calculator.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles 13
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/pp6calculator.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles 0
 .PHONY : CMakeFiles/pp6calculator.dir/rule
@@ -112,7 +113,7 @@ PP6Lib/preinstall:
 PP6Lib/CMakeFiles/pp6lib.dir/all:
 	$(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/depend
 	$(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/build
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles  2 3 4 5 6 7 8 9 10 11 12 13
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles  3 4 5 6 7 8 9 10 11 12 13 14
 	@echo "Built target pp6lib"
 .PHONY : PP6Lib/CMakeFiles/pp6lib.dir/all
 
@@ -138,6 +139,56 @@ PP6Lib/CMakeFiles/pp6lib.dir/clean:
 
 # clean rule for target.
 clean: PP6Lib/CMakeFiles/pp6lib.dir/clean
+.PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory FileReader
+
+# Convenience name for "all" pass in the directory.
+FileReader/all: FileReader/CMakeFiles/FileReader.dir/all
+.PHONY : FileReader/all
+
+# Convenience name for "clean" pass in the directory.
+FileReader/clean: FileReader/CMakeFiles/FileReader.dir/clean
+.PHONY : FileReader/clean
+
+# Convenience name for "preinstall" pass in the directory.
+FileReader/preinstall:
+.PHONY : FileReader/preinstall
+
+#=============================================================================
+# Target rules for target FileReader/CMakeFiles/FileReader.dir
+
+# All Build rule for target.
+FileReader/CMakeFiles/FileReader.dir/all:
+	$(MAKE) -f FileReader/CMakeFiles/FileReader.dir/build.make FileReader/CMakeFiles/FileReader.dir/depend
+	$(MAKE) -f FileReader/CMakeFiles/FileReader.dir/build.make FileReader/CMakeFiles/FileReader.dir/build
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles  1
+	@echo "Built target FileReader"
+.PHONY : FileReader/CMakeFiles/FileReader.dir/all
+
+# Include target in all.
+all: FileReader/CMakeFiles/FileReader.dir/all
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+FileReader/CMakeFiles/FileReader.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 FileReader/CMakeFiles/FileReader.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles 0
+.PHONY : FileReader/CMakeFiles/FileReader.dir/rule
+
+# Convenience name for target.
+FileReader: FileReader/CMakeFiles/FileReader.dir/rule
+.PHONY : FileReader
+
+# clean rule for target.
+FileReader/CMakeFiles/FileReader.dir/clean:
+	$(MAKE) -f FileReader/CMakeFiles/FileReader.dir/build.make FileReader/CMakeFiles/FileReader.dir/clean
+.PHONY : FileReader/CMakeFiles/FileReader.dir/clean
+
+# clean rule for target.
+clean: FileReader/CMakeFiles/FileReader.dir/clean
 .PHONY : clean
 
 #=============================================================================

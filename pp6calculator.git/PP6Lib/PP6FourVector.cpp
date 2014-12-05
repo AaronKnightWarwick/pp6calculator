@@ -2,22 +2,38 @@
 //----------===============----------
 
 #include <PP6FourVector.hpp>
+
 #include <cmath>
 #include <sstream>
 
-const double FourVector::c(3E8);
-const double FourVector::c2(9E16);
+const double FourVector::c(1);
+const double FourVector::c2(1);
+
+FourVector::FourVector() : t_(0.0), x_(), s_(0.0)
+{}
+
+FourVector::FourVector(const FourVector& other)
+  : t_(other.getT()), x_(other.getThreeVector()), s_(other.interval())
+{}
+
+FourVector::FourVector(const double t, const double x, const double y, const double z) : t_(t), x_(x, y, z)
+{
+  compute_interval();
+}
+
+FourVector::FourVector(const double t, const ThreeVector& x) : t_(t), x_(x)
+{
+  compute_interval();
+}
 
 //----------Member Operators----------
 //----------================----------
 
 FourVector& FourVector::operator=(const FourVector& other)
 {
-  if(this != &other){
+  if( this != &other ){
     t_ = other.getT();
-    x_ = other.getX();
-    y_ = other.getY();
-    z_ = other.getZ();
+    x_ = other.getThreeVector();
     s_ = other.interval();
   }
   return *this;
@@ -26,9 +42,7 @@ FourVector& FourVector::operator=(const FourVector& other)
 FourVector& FourVector::operator+=(const FourVector& rhs)
 {
   t_ += rhs.getT();
-  x_ += rhs.getX();
-  y_ += rhs.getY();
-  z_ += rhs.getZ();
+  x_ += rhs.getThreeVector();
   compute_interval();
   return *this;
 }
@@ -36,53 +50,107 @@ FourVector& FourVector::operator+=(const FourVector& rhs)
 FourVector& FourVector::operator-=(const FourVector& rhs)
 {
   t_ -= rhs.getT();
-  x_ -= rhs.getX();
-  y_ -= rhs.getY();
-  z_ -= rhs.getZ();
+  x_ -= rhs.getThreeVector();
   compute_interval();
   return *this;
 }
 
-//----------Member Functions----------
+FourVector& FourVector::operator*=(const double rhs)
+{
+  t_ *= rhs;
+  x_ *= rhs;
+  compute_interval();
+  return *this;
+}
+
+FourVector& FourVector::operator/=(const double rhs)
+{
+  t_ /= rhs;
+  x_ /= rhs;
+  compute_interval();
+  return *this;
+}
+
+//----------Member functions----------
 //----------================----------
+
+void FourVector::setT(double t)
+{
+  t_ = t;
+  compute_interval();
+}
+
+void FourVector::setThreeVector(const ThreeVector& v)
+{
+  x_ = v;
+  compute_interval();
+}
+
+void FourVector::setX(const double x)
+{
+  x_.setX(x);
+}
+
+void FourVector::setY(const double y)
+{
+  x_.setY(y);
+}
+
+void FourVector::setZ(const double z)
+{
+  x_.setZ(z);
+}
 
 double FourVector::interval() const
 {
   return s_;
 }
+
 int FourVector::boost_z(const double velocity)
 {
-  if(velocity >= c){
-    return 1; 
+  if( velocity >= c )  {
+    return 1;
   }
-  double gamma = 1 / sqrt(1 - velocity * velocity / c2);
-  double z_prime = gamma * ( z_ - velocity * t_);
-  double t_prime = gamma * ( t_ - velocity * z_ / c2);
-  z_ = z_prime;
+
+  double gamma = 1.0 / sqrt(1.0 - velocity * velocity / c2);
+  
+  double z_prime = gamma * ( x_.getZ() - velocity * t_);
+  double t_prime = gamma * ( t_ - velocity * x_.getZ() / c2);
+  x_.setZ(z_prime);
   t_ = t_prime;
+
   return 0; 
 }
+
+FourVector::CausalType FourVector::getCausalType() const
+{
+  CausalType k = LIGHTLIKE;
+  if(this->interval() > 0.0){
+    k = SPACELIKE;
+  } else if(this->interval() < 0.0){
+    k = TIMELIKE;
+  }
+  return k;
+}
+
 std::string FourVector::asString() const
 {
   std::ostringstream s;
   s << *this;
   return s.str();
 }
+
 void FourVector::compute_interval()
 {
-
-  s_ = c2*t_*t_ - (x_*x_ + y_*y_ + z_*z_);
+  s_ = c2*t_*t_ - x_.length()*x_.length();
 }
-
-
-
 
 FourVector* createFourVector() {
   return new FourVector;
 }
 
 FourVector* createFourVector(const double t, const double x, const double y,
-			     const double z) {
+                             const double z) {
   FourVector *p = new FourVector(t, x, y, z);
   return p;
 }
@@ -94,22 +162,40 @@ void destroyFourVector(FourVector *&p) {
   }
 }
 
-
-
-std::istream& operator>>(std::istream& in, FourVector& vec)
+std::string asString(const FourVector::CausalType k)
 {
-  double x(0.0), y(0.0), z(0.0), t(0.0);
-  in >> t >> x >> y >> z;
+  std::ostringstream s;
+  s << "[";
+  if(k == FourVector::TIMELIKE){
+    s << "timelike";
+  } else if (k == FourVector::SPACELIKE) {
+    s << "spacelike";
+  } else if (k == FourVector::LIGHTLIKE) {
+    s << "lightlike";
+  } else {
+    s << "INVALID";
+  }
+
+  s << "]";
+  return s.str();
+}
+
+//----------Free operators----------
+//----------==============----------
+
+std::istream& operator>>(std::istream& in, FourVector& vec){
+  double t(0.0);
+  ThreeVector p3;
+  std::string dummy;
+  in >> dummy >> t >> dummy >> p3 >> dummy;
   vec.setT(t);
-  vec.setX(x);
-  vec.setY(y);
-  vec.setZ(z);
+  vec.setThreeVector(p3);
   return in;
 }
 
 std::ostream& operator<<(std::ostream& out, const FourVector& vec)
 {
-  out << "(" << vec.getT() << ", " << vec.getX() << ", " << vec.getY() << ", " << vec.getZ() << ")";
+  out << "( " << vec.getT() << " , " << vec.getThreeVector() << " )";
   return out;
 }
 
@@ -126,3 +212,30 @@ FourVector operator-(const FourVector& lhs, const FourVector& rhs)
   temp -= rhs;
   return temp;
 }
+
+FourVector operator*(const FourVector& lhs, const double rhs)
+{
+  FourVector temp(lhs);
+  temp *= rhs;
+  return temp;
+}
+
+FourVector operator*(const double lhs, const FourVector& rhs)
+{
+  FourVector temp(rhs);
+  temp *= lhs;
+  return temp;
+}
+
+FourVector operator/(const FourVector& lhs, const double rhs)
+{
+  FourVector temp(lhs);
+  temp /= rhs;
+  return temp;
+}
+
+double contraction(const FourVector& lhs, const FourVector& rhs)
+{
+  return lhs.getT() * rhs.getT() - lhs.getThreeVector().length() * rhs.getThreeVector().length();
+}
+

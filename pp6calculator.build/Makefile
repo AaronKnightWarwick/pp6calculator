@@ -188,6 +188,19 @@ pp6lib/fast:
 	$(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/build
 .PHONY : pp6lib/fast
 
+#=============================================================================
+# Target rules for targets named FileReader
+
+# Build rule for target.
+FileReader: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 FileReader
+.PHONY : FileReader
+
+# fast build rule for target.
+FileReader/fast:
+	$(MAKE) -f FileReader/CMakeFiles/FileReader.dir/build.make FileReader/CMakeFiles/FileReader.dir/build
+.PHONY : FileReader/fast
+
 pp6calculator.o: pp6calculator.cpp.o
 .PHONY : pp6calculator.o
 
@@ -228,6 +241,7 @@ help:
 	@echo "... pp6calculator"
 	@echo "... rebuild_cache"
 	@echo "... pp6lib"
+	@echo "... FileReader"
 	@echo "... pp6calculator.o"
 	@echo "... pp6calculator.i"
 	@echo "... pp6calculator.s"
