@@ -233,7 +233,7 @@ int associative_sort(double *arr, int *index, int size){
     return 0;
 }
 
-void printarray(double *arr, int size){
+void printArray(double *arr, int size){
   std::cout << "[array:" << arr << "]{";
   for(int i = 0; i < size - 1; ++i){
     std::cout << arr[i] << ", ";

@@ -262,7 +262,7 @@ double input(){
     return res;
 }
 
-std::string string(){
+std::string getString(){
   
   std::string res;
   
