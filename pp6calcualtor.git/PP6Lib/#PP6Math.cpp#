@@ -251,7 +251,7 @@ double input(){
     std::cin >> res;
   
     while(!std::cin){
-      std::cout << "User input error " << std::endl;
+      std::cout << "User input error" << std::endl;
       
       std::cin.clear();
       std::cin.ignore();

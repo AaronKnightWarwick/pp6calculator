@@ -64,20 +64,20 @@ int divide(double a, double b, double& answer){
 //----------Quadratic----------
 //----------=========----------
 
-int quadratic(double a, double b, double c, double& positiveRoot,
-	      double& negativeRoot){
+int quadratic(double a, double b, double c, double& positive_root,
+	      double& negative_root){
   if(a == 0){
     return 1;
   }
 
-  double t(pow(b, 2) - 4 * a * c);
+  double discriminant(pow(b, 2) - 4 * a * c);
 
-  if(t < 0){
+  if(discriminant < 0){
     return 2;
   }
 
-  positiveRoot = (-b + sqrt(t)) / (2 * a);
-  negativeRoot = (-b - sqrt(t)) / (2 * a);
+  positive_root = (-b + sqrt(discriminant)) / (2 * a);
+  negative_root = (-b - sqrt(discriminant)) / (2 * a);
   
   return 0;
 } 
@@ -158,7 +158,7 @@ double inv_mass(double E1, double px1, double py1, double pz1,
   double tot_py(py1 + py2);
   double tot_pz(pz1 + pz2);
   
-  if(length(tot_E, tot_px, tot_py, tot_pz, invarmass)){
+  if(length(tot_E, tot_px, tot_py, tot_pz, invariantmass)){
     return 1;
   }
   return 0; 
@@ -233,7 +233,7 @@ int associative_sort(double *arr, int *index, int size){
     return 0;
 }
 
-void printArray(double *arr, int size){
+void printarray(double *arr, int size){
   std::cout << "[array:" << arr << "]{";
   for(int i = 0; i < size - 1; ++i){
     std::cout << arr[i] << ", ";
@@ -241,7 +241,7 @@ void printArray(double *arr, int size){
   std::cout << arr[size - 1] << "}" << std::endl;
 }
 
-double getRandom(){
+double getrandom(){
   return (rand() % 10000)/10000.;
 }
 
@@ -262,7 +262,7 @@ double input(){
     return res;
 }
 
-std::string getString(){
+std::string string(){
   
   std::string res;
   

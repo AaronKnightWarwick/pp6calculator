@@ -1,7 +1,9 @@
-//----------PP6 Day 2 Muon Analysis----------
+//----------PP6 Day 3 Muon Analysis----------
 //----------=======================----------
 
-#include "PP6Day2MuonAnalysis.hpp"
+// A rewrite of the Day 2 Muon Analysis 
+
+#include "PP6Day3MuonAnalysis.hpp"
 
 //----------Standard Library----------
 //----------================----------
@@ -205,8 +207,8 @@ int pp6day2_muonanalysis(){
   std::cout << "----------------------------" << std::endl;
   
   for(int i; i < 10; ++i){
-    int muonIndex(muonPairIndex[i] % numberOfMuons);
-    int antimuonIndex((muonPairIndex[i] - muonIndex) / numberOfMuons);
+    int muonIndex(muonPairIndex[i] % numofmuons);
+    int antimuonIndex((muonPairIndex[i] - muonIndex) / numofmuons);
     
     std::cout << "{InvariantMass : " << invariantMass[muonPairIndex[i]]
               << ",\n\t"
