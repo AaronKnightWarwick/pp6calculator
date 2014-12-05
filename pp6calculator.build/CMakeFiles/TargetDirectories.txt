@@ -1,0 +1,2 @@
+/home/epp/phrhzv/mpagspp6/pp6calculator.build/CMakeFiles/pp6calculator.dir
+/home/epp/phrhzv/mpagspp6/pp6calculator.build/PP6Lib/CMakeFiles/pp6lib.dir

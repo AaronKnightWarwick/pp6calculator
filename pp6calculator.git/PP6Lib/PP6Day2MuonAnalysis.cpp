@@ -22,11 +22,12 @@
 int countmuons(const std::string& input, const std::string& runname,
                int& numofmuons, int& numofantimuons){
   
-  FileReader counter(input);
+FileReader counter(input);
   if(!counter.isValid()){
     std::cerr << "[ERROR] " << input << " is not valid" << std::endl;
     return 1;
   }
+
 
   numofmuons = 0;
   numofantimuons = 0;

@@ -1,9 +1,7 @@
-//----------PP6 Day 3 Muon Analysis----------
+//----------PP6 Day 2 Muon Analysis----------
 //----------=======================----------
 
-// A rewrite of the Day 2 Muon Analysis 
-
-#include "PP6Day3MuonAnalysis.hpp"
+#include "PP6Day2MuonAnalysis.hpp"
 
 //----------Standard Library----------
 //----------================----------
@@ -22,13 +20,14 @@
 #include "PP6Math.hpp"
 
 int countmuons(const std::string& input, const std::string& runname,
-               int& numofmuons, int& numofantimuons){
+               int& numofmuons, int& numofantimuons);
   
-  FileReader counter(input);
+FileReader counter(input);
   if(!counter.isValid()){
     std::cerr << "[ERROR] " << input << " is not valid" << std::endl;
     return 1;
   }
+  
 
   numofmuons = 0;
   numofantimuons = 0;
