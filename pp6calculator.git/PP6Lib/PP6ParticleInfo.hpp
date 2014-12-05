@@ -32,4 +32,4 @@ class ParticleInfo {
   std::map<int, double> id_to_mass;
 };
 
-#endif PARTICLEINFO_HPP
+#endif 
