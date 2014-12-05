@@ -186,16 +186,13 @@ void pp6day4_menu() {
    
       std::cin >> menu4;
 
-      if(!std::cin)
-	{
-	  std::cerr << "[error] Error in input" << std::endl;
-    
-	  std::cin.clear();
-	  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+      if(!std::cin){
+	  std::cerr << "[ERROR] User input error" << std::endl;
+    	  std::cin.clear();
+	  std::cin.ignore();
 	  continue;
 	}
 
-      // Handle menu operation
       if (op == 'menu4')
 	{
 	  break;
@@ -218,14 +215,14 @@ void pp6day4_menu() {
 	}
       else
 	{
-	  std::cerr << "[error] Operation '" << menu4 << "' not recognised."
+	  std::cerr << "[ERROR] Operation '" << menu4 << "' not recognised."
 		    << std::endl;
 	  continue;
 	}
 
       if (res)
 	{
-	  std::cerr << "[error] Operation '" << menu4 
+	  std::cerr << "[ERROR] Operation '" << menu4 
 		    << "' returned a non-zero code '" << res
 		    << "'. Please check parameters."
 		    << std::endl;

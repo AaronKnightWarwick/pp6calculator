@@ -60,6 +60,26 @@ int divide(double a, double b, double& answer){
 //  std::cout << "The y-intercept of the line is " << y_intercept << std::endl;
 //  std::cout << "The x-intercept of the line is " << x_intercept << std::endl;
 //}
+//Still not working
+/*double intercept(double x1, double x2, double y1, double y2, double m){
+  std::cout << "Enter a value for x1: ";
+  x1 = input();
+  std::cout << "Enter a value for x2: ";
+  x2 = input();
+  std::cout << "Enter a value for y1: ";
+  y1 = input();
+  std::cout << "Enter a value for y2: ";
+  y2 = input();
+
+  m = (y2 - y1)/(x1 - x2);
+
+  double y_intercept = y1-m*x1;
+  double x_intercept = -y_intercept/m;
+
+  std::cout << "The gradient of the line is: " << m << std::endl;
+  std::cout << "The y-intercept of the line is: " << y_intercept << std::endl;
+  std::cout << "The x-intercept of the line is: " << x_intercept << std::endl;
+  }*/
 
 //----------Quadratic----------
 //----------=========----------

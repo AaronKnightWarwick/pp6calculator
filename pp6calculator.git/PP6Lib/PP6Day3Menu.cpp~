@@ -111,7 +111,7 @@ void pp6day3_menu()
 		  << "' returned a non-zero code '" << res
 		  << "'. Please check parameters."
 		  << std::endl;
-	resultCode = 0;
+	res = 0;
 	destroyFourVector(iV);
 	destroyFourVector(iU);
 	continue;

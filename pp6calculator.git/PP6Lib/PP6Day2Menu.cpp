@@ -54,16 +54,17 @@ void pp6day2_menu() {
     else if(menu2 == '1'){
       
       double a, b;
-      std::cout << "Enter the first number you wish to be swapped: " << std::endl;
+      std::cout << "Enter the first number you wish to be swapped: ";
       a = input();
-      std::cout << "Enter the second number you wish to be swapped: "
-		<< std::endl;
+      std::cout << "Enter the second number you wish to be swapped: ";
       b = input();
  
       std::cout << "Before the swap a = " << a << " and b = " << b << std::endl;
       
       swap(a, b);
       
+      std::cout << "A swap is being performed" << std::endl;
+
       std::cout << "After the swap a = " << a << " and b = " << b << std::endl; 
     }
     

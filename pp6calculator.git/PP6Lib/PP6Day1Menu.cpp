@@ -81,7 +81,7 @@ void pp6day1_menu()
 
     else if(menu1 == '5'){
       
-      std::cout << "Currently under construction" << std::endl;
+      std::cout << "Currently not working, working on a fix" << std::endl;
 
       //double x1, x2, y1, y2, m, x_intercept, y_intercept;
 

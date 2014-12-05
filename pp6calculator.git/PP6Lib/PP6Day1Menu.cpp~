@@ -165,7 +165,7 @@ void pp6day1_menu()
       std::cout << "Enter the e value for the second particle: ";
       E2 = input();
 
-      res = invariantmass(E1, px1, py1, pz1, E2, px2, py2, pz2, ans1);
+      res = inv_mass(E1, px1, py1, pz1, E2, px2, py2, pz2, ans1);
     }
     
     else{
