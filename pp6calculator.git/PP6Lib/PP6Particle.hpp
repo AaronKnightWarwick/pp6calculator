@@ -1,23 +1,31 @@
-// File - PP6Particle.hpp
-// Author - Aaron Knight
-// Brief - Declaration of Particle class
+// File -  PP6Particle.hpp
+// Author -  Aaron Knight
+// Brief -  Declaration of Particle class
 
 #ifndef PP6PARTICLE_HPP
 #define PP6PARTICLE_HPP
 
+//----------Standard Library----------
+//----------================----------
+
 #include <string>
 #include <vector>
+
+//----------This Project----------
+//----------============----------
 
 #include "PP6FourVector.hpp"
 #include "PP6ThreeVector.hpp"
 
 class Particle {
- public:
+
+public:
   Particle(); 
   Particle(const Particle& other); 
   Particle(const int pdg_code, const double mass); 
   Particle(const int pdg_code, const double mass, const ThreeVector& momentum);
-  Particle(const int pdg_code, const double mass, const double px, const double py, const double pz);
+  Particle(const int pdg_code, const double mass, const double px, 
+	   const double py, const double pz);
 
   Particle& operator=(const Particle& other);
 
@@ -33,7 +41,7 @@ class Particle {
   void setThreeMomentum(const ThreeVector& p);
   void setThreeMomentum(const double px, const double py, const double pz);
 
- private:
+private:
   int pdg_code_;
   double mass_;
   FourVector momentum_;

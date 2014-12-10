@@ -1,24 +1,18 @@
-//----------PP6 Day 3 Muon Analysis----------
-//----------=======================----------
-
+// PP6Day3MuonAnalysis.cpp : Definition of PP6Day3MuonAnalysis functions
+//
 #include "PP6Day3MuonAnalysis.hpp"
 
-//----------Standard Library----------
-//----------================----------
-
+// Standard Library
 #include <iostream>
 
-//----------Third Party----------
-//----------===========----------
-
+// Third Party
 #include "FileReader.hpp"
 
-//----------This Project----------
-//----------============----------
-
+// This Project
 #include "PP6Math.hpp"
 #include "PP6Particle.hpp"
 
+//! struct to hold arrays of event numbers and particles
 struct EventArray {
   size_t size;
   int *ids;
@@ -45,6 +39,7 @@ void destroyEventArray(EventArray *&p) {
   }
 }
 
+//! Dumb function to convert from PDG name to integer code
 int getPDGCode(const std::string& name) {
   if (name == "mu-") {
     return 13;
@@ -54,8 +49,10 @@ int getPDGCode(const std::string& name) {
   return 0;
 }
 
+//! Count particles of particular name and runOd in supplied file
 int countParticles(const std::string& inputFile, const std::string& particle,
                    const std::string& runId, size_t& count) {
+  // Create a filereader and check its validity
   FileReader counter(inputFile);
   if (!counter.isValid()) {
     std::cerr << "[countParticles:error] "
@@ -69,6 +66,8 @@ int countParticles(const std::string& inputFile, const std::string& particle,
   std::string particleName, dataID;
 
   while (counter.nextLine()) {
+    // Valid lines should begin with an integer, continue without error
+    // to skip header
     counter.getFieldAsInt(1);
     if (counter.inputFailed()) continue;
 
@@ -96,10 +95,13 @@ int countParticles(const std::string& inputFile, const std::string& particle,
   return 0;
 }
   
+//! create EventArray of known particles matching a specific PDG name
+// and runID. 
 EventArray* createParticles(const std::string& inputFile,
                             const size_t knownNumber, 
                             const std::string& particle, 
-                            const double mass, const std::string& runId) {
+                            const double /*mass*/, const std::string& runId) {
+  // Create a filereader and check its validity
   FileReader counter(inputFile);
   if (!counter.isValid()) {
     std::cerr << "[createParticles:error] "
@@ -117,6 +119,8 @@ EventArray* createParticles(const std::string& inputFile,
   double px(0.0), py(0.0), pz(0.0);
 
   while (counter.nextLine()) {
+    // Valid lines should begin with an integer, continue without error
+    // to skip header
     eventId = counter.getFieldAsInt(1);
     if (counter.inputFailed()) continue;
 
@@ -171,9 +175,11 @@ EventArray* createParticles(const std::string& inputFile,
           return pEA;
         }
         
+        // Input is all o.k. for this line, so add the entry to the
+        // EventArray
         pdgCode = getPDGCode(particle);
         (pEA->ids)[currentParticle] = eventId;
-        (pEA->particles)[currentParticle] = Particle(pdgCode, mass, px, py, pz);
+        (pEA->particles)[currentParticle] = Particle(pdgCode, px, py, pz);
         ++currentParticle;
       }
     }
@@ -182,35 +188,45 @@ EventArray* createParticles(const std::string& inputFile,
   return pEA;
 }
   
+//! read particles matching a specific PDG name and run id from supplied
+//  file. Must supply particle mass ourselves...
 EventArray* readParticles(const std::string& file, 
                           const std::string& particle, 
                           const double mass, const std::string& runId) {
   
-  int res;
+  int resultCode(0);
   size_t numberOf(0); 
-  res = countParticles(file, particle, runId, numberOf);
-  if (res) {
+  resultCode = countParticles(file, particle, runId, numberOf);
+  if (resultCode) {
     std::cerr << "[pp6day3_muonanalysis:error] Failed to count particles in file "
               << file
               << std::endl;
     return 0;
   }
 
+  // With number of particles known, create the appropriately sized
+  // EventArray and fill it
   return createParticles(file, numberOf, particle, mass, runId);
 }
 
 
 int pp6day3_muonanalysis() {
   std::string muonFile;
+  //int resultCode(0);
 
+  // Obtain filename from user
   std::cout << "Enter filename to analyse: ";
   muonFile = getString();
 
+  // Create EventArrays of muons/antimuons in input file
   std::string runID("run4.dat");
-  double muonMass = 0.105658366; 
+  double muonMass = 0.105658366; // GeV
   EventArray* p = readParticles(muonFile, "mu-", muonMass, runID);
   EventArray* q = readParticles(muonFile, "mu+", muonMass, runID);
 
+  // Create an array of suffcient size to hold the invariant masses
+  // formed between each muon/antimuon pair, plus an array
+  // to hold the flattened indices
   int combinations = p->size * q->size;
   double *invMasses = new double[combinations];
   int *indices = new int[combinations];
@@ -224,8 +240,12 @@ int pp6day3_muonanalysis() {
     }
   }
 
+  // Sort the invariant masses using an associative sort over the indices
   associative_sort(invMasses, indices, combinations);
 
+  //--------------------------------------------------------------------
+  // - Present results
+  //
   std::cout << "Results:" << std::endl;
   std::cout << "========" << std::endl;
   std::cout << "Analysed File : " << muonFile << std::endl;

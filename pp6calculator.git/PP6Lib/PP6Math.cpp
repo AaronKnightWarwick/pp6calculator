@@ -1,5 +1,5 @@
-//----------PP6 Math----------
-//----------========----------
+//----------PP6Math.cpp----------
+//----------===========----------
 
 #include "PP6Math.hpp"
 
@@ -11,8 +11,8 @@
 #include <cmath>
 #include <cstdlib>
 
-//----------Arithmetic Operations----------
-//----------=====================----------
+//----------Arithmetic Operators----------
+//----------====================----------
 
 int add(double a, double b, double& answer){
   answer = a + b;
@@ -38,15 +38,9 @@ int divide(double a, double b, double& answer){
   return 0;
 }
 
-//----------Intercept----------
-//----------=========----------
-
 int intercept(double m, double c, double& answer){
   return divide(-c, m, answer);
 }
-
-//----------Quadratic----------
-//----------=========----------
 
 int quadratic(double a, double b, double c, double& positiveRoot,
               double& negativeRoot){
@@ -73,14 +67,14 @@ int getMeanAndStdDev(double *x, int size, double& mean, double& stddev){
   if(!x) return 1;
 
   mean = 0;
-  for(int i(0); i < size; ++i){
+  for(int i; i < size; ++i){
     mean += x[i];
   }
 
   mean /= size;
 
   stddev = 0;
-  for(int i(0); i < size; ++i){
+  for(int i; i < size; ++i){
     stddev += (x[i] - mean) * (x[i] - mean);
   }
 
@@ -93,83 +87,79 @@ int getMeanAndStdDev(double *x, int size, double& mean, double& stddev){
 //----------Vector Operations----------
 //----------=================----------
 
-double length(double x, double y, double z, double& vectorLength){
-  vectorLength = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+double length(double x, double y, double z, double& vectorlength){
+  vectorlength = sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
   return 0;
 }
 
-double length(double t, double x, double y, double z, double& vectorLength){
-  double spaceLength(0);
-  if(length(x, y, z, spaceLength)){
+double length(double t, double x, double y, double z, double& vectorlength)
+{
+  double spacelength;
+  if(length(x, y, z, spacelength)){
     return 1;
   }
 
-  double timeSquared(pow(t, 2));
-  double spaceSquared(pow(spaceLength, 2));
+  double timesquared(pow(t, 2));
+  double spacesquared(pow(spacelength, 2));
 
-  if(timeSquared < spaceSquared){
+  if(timesquared < spacesquared){
     return 2;
   }
 
-  vectorLength = sqrt(timeSquared - spaceSquared);
+  vectorlength = sqrt(timesquared - spacesquared);
   return 0;
 }
 
-int sumVectors(double *x, double *y, double *z, int size, 
+int sumVectors(double *x, double *y, double *z, int size,
                double &sumX, double &sumY, double &sumZ){
   if((!x) || (!y) || (!z)){
-    return 1;
-  }
+      return 1;
+    }
 
   sumX = 0;
   sumY = 0;
   sumZ = 0;
 
   for(int i(0); i < size; ++i){
-    sumX += x[i];
-    sumY += y[i];
-    sumZ += z[i];
-  }
+      sumX += x[i];
+      sumY += y[i];
+      sumZ += z[i];
+    }
 
   return 0;
 }
 
-//----------Invariant Mass----------
-//----------==============----------
-
-double inv_mass(double e1, double px1, double py1, double pz1, 
-                double e2, double px2, double py2, double pz2,
-                double& invariantMass){
-  double tot_e(e1 + e2);
+double inv_mass(double E1, double px1, double py1, double pz1,
+                double E2, double px2, double py2, double pz2,
+                double& invariantMass)
+{
+  double tot_E(E1 + E2);
   double tot_px(px1 + px2);
   double tot_py(py1 + py2);
   double tot_pz(pz1 + pz2);
 
-  if(length(tot_e, tot_px, tot_py, tot_pz, invariantMass)){
-    return 1;
-  }
-  return 0; 
+  if(length(tot_E, tot_px, tot_py, tot_pz, invariantMass)){
+      return 1;
+    }
+  return 0;
 }
 
-//----------Swap Operation----------
-//----------==============----------
+//----------Sorting Operations----------
+//----------==================----------
 
 int swap(double& a, double& b){
-  double tmp(a);
+  double temp;
   a = b;
-  b = tmp;
+  b = temp;
   return 0;
 }
 
 int swap(int& a, int& b){
-  int tmp(a);
+  int temp;
   a = b;
-  b = tmp;
+  b = temp;
   return 0;
 }
-
-//----------Sorting Algorithms----------
-//----------==================----------
 
 int basic_sort(double *arr, int size){
   bool done(true);
@@ -193,16 +183,15 @@ int basic_sort(double *arr, int size){
 
 int associative_sort(double *arr, int *index, int size){
   double *arr_t = new double[size];
-  for(int i(0); i < size; i++){
+  for(int i; i < size; i++){
     arr_t[i] = arr[i];
   }
 
   bool done(true);
-
   while(true){
     done = true;
 
-    for(int i(0); i < size-1; ++i){
+    for(int i; i < size-1; ++i){
       if(arr_t[i] < arr_t[i+1]){
         swap(index[i], index[i+1]);
         swap(arr_t[i], arr_t[i+1]);
@@ -234,7 +223,7 @@ double getRandom(){
 }
 
 double getNumber(){
-  double res(0);
+  double res;
 
   std::cin >> res;
 
@@ -242,6 +231,7 @@ double getNumber(){
     std::cout << "Error in input. Please re-enter >> ";
     std::cin.clear();
     std::cin.ignore();
+
     std::cin >> res;
   }
 

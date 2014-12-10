@@ -11,6 +11,12 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/pp6lib.dir/PP6Day3MuonAnalysis.cpp.o"
   "CMakeFiles/pp6lib.dir/PP6Day4Menu.cpp.o"
   "CMakeFiles/pp6lib.dir/PP6ParticleInfo.cpp.o"
+  "CMakeFiles/pp6lib.dir/PP6Day4MuonAnalysis.cpp.o"
+  "CMakeFiles/pp6lib.dir/PP6Day5Menu.cpp.o"
+  "CMakeFiles/pp6lib.dir/PP6Cut.cpp.o"
+  "CMakeFiles/pp6lib.dir/PP6EnergyCut.cpp.o"
+  "CMakeFiles/pp6lib.dir/PP6MassCut.cpp.o"
+  "CMakeFiles/pp6lib.dir/PP6MomentumCut.cpp.o"
   "libpp6lib.pdb"
   "libpp6lib.a"
 )

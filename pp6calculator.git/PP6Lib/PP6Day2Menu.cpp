@@ -1,5 +1,5 @@
-//----------PP6 Day 2 Menu----------
-//----------==============----------
+//----------PP6Day2Menu.cpp----------
+//----------===============----------
 
 #include "PP6Day2Menu.hpp"
 
@@ -20,7 +20,8 @@
 //----------Main Code----------
 //----------=========----------
 
-void pp6day2_menu() {
+void pp6day2_menu(){
+
   double res; 
   char menu2;
 
@@ -28,15 +29,17 @@ void pp6day2_menu() {
     std::cout << "                          " << std::endl;
     std::cout << "PP6Calculator - Day 2 Menu" << std::endl;
     std::cout << "==========================" << std::endl;
-    std::cout << "Enter the number of the operation you wish to perform:" << std::endl;
-    std::cout << "1 - Swap Two Numbers" << std::endl;
-    std::cout << "2 - Sort an Array of Numbers" << std::endl;
-    std::cout << "3 - Generate and Analyse N Random 4-Vectors" << std::endl;
-    std::cout << "4 - Analyse input files for muon pairs" << std::endl;
+    std::cout << "                          " << std::endl;
+    std::cout << "Please enter the operation you wish to perform:" << std::endl;
+    std::cout << "Enter '1' to swap two numbers" << std::endl;
+    std::cout << "Enter '2' to sort an array of numbers" << std::endl;
+    std::cout << "Enter '3' to generate and analyse N random 4-Vectors" << std::endl;
+    std::cout << "Enter '4' to analyse input files for muon pairs" << std::endl;
     std::cout << "Enter 'q' to quit" << std::endl;
     std::cout << "                 " << std::endl;
     
     std::cin >> menu2;
+      
     if(!std::cin){
       std::cerr << "[ERROR] User input error" << std::endl;
       std::cin.clear();
@@ -47,19 +50,19 @@ void pp6day2_menu() {
     if(menu2 == 'q'){
       break;
     }
+    
     else if(menu2 == '1'){
       double a, b;
-      std::cout << "Enter a value for a: ";
+      std::cout << "Enter the first number: ";
       a = getNumber();
-      std::cout << "Enter a value for b: ";
+      std::cout << "Enter the second number: ";
       b = getNumber();
  
-      std::cout << "Before the swap a = " << a << " and b = " << b << std::endl;
-      
+      std::cout << "Before swap (a,b) = (" << a << ", " << b << ")" 
+                << std::endl;
       swap(a, b);
-      std::cout << "A swap is being performed using the 'swap' function" << std::endl;
-
-      std::cout << "After the swap a = " << a << " and b = " << b << std::endl; 
+      std::cout << "After swap (a,b) = (" << a << ", " << b << ")"
+                << std::endl; 
     }
     else if(menu2 == '2'){
       int arraySize;
@@ -89,9 +92,11 @@ void pp6day2_menu() {
     else if(menu2 == '3'){
       res = pp6day2_vectoranalysis();
     }
+
     else if(menu2 == '4'){
       res = pp6day2_muonanalysis();
     }
+
     else{
       std::cerr << "[ERROR] Operation '" << menu2 << "' not recognised." << std::endl;
       continue;

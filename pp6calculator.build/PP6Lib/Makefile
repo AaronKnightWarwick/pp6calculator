@@ -176,6 +176,30 @@ pp6lib/fast:
 	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/build
 .PHONY : pp6lib/fast
 
+PP6Cut.o: PP6Cut.cpp.o
+.PHONY : PP6Cut.o
+
+# target to build an object file
+PP6Cut.cpp.o:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Cut.cpp.o
+.PHONY : PP6Cut.cpp.o
+
+PP6Cut.i: PP6Cut.cpp.i
+.PHONY : PP6Cut.i
+
+# target to preprocess a source file
+PP6Cut.cpp.i:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Cut.cpp.i
+.PHONY : PP6Cut.cpp.i
+
+PP6Cut.s: PP6Cut.cpp.s
+.PHONY : PP6Cut.s
+
+# target to generate assembly for a file
+PP6Cut.cpp.s:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Cut.cpp.s
+.PHONY : PP6Cut.cpp.s
+
 PP6Day1Menu.o: PP6Day1Menu.cpp.o
 .PHONY : PP6Day1Menu.o
 
@@ -344,6 +368,78 @@ PP6Day4Menu.cpp.s:
 	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Day4Menu.cpp.s
 .PHONY : PP6Day4Menu.cpp.s
 
+PP6Day4MuonAnalysis.o: PP6Day4MuonAnalysis.cpp.o
+.PHONY : PP6Day4MuonAnalysis.o
+
+# target to build an object file
+PP6Day4MuonAnalysis.cpp.o:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Day4MuonAnalysis.cpp.o
+.PHONY : PP6Day4MuonAnalysis.cpp.o
+
+PP6Day4MuonAnalysis.i: PP6Day4MuonAnalysis.cpp.i
+.PHONY : PP6Day4MuonAnalysis.i
+
+# target to preprocess a source file
+PP6Day4MuonAnalysis.cpp.i:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Day4MuonAnalysis.cpp.i
+.PHONY : PP6Day4MuonAnalysis.cpp.i
+
+PP6Day4MuonAnalysis.s: PP6Day4MuonAnalysis.cpp.s
+.PHONY : PP6Day4MuonAnalysis.s
+
+# target to generate assembly for a file
+PP6Day4MuonAnalysis.cpp.s:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Day4MuonAnalysis.cpp.s
+.PHONY : PP6Day4MuonAnalysis.cpp.s
+
+PP6Day5Menu.o: PP6Day5Menu.cpp.o
+.PHONY : PP6Day5Menu.o
+
+# target to build an object file
+PP6Day5Menu.cpp.o:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Day5Menu.cpp.o
+.PHONY : PP6Day5Menu.cpp.o
+
+PP6Day5Menu.i: PP6Day5Menu.cpp.i
+.PHONY : PP6Day5Menu.i
+
+# target to preprocess a source file
+PP6Day5Menu.cpp.i:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Day5Menu.cpp.i
+.PHONY : PP6Day5Menu.cpp.i
+
+PP6Day5Menu.s: PP6Day5Menu.cpp.s
+.PHONY : PP6Day5Menu.s
+
+# target to generate assembly for a file
+PP6Day5Menu.cpp.s:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Day5Menu.cpp.s
+.PHONY : PP6Day5Menu.cpp.s
+
+PP6EnergyCut.o: PP6EnergyCut.cpp.o
+.PHONY : PP6EnergyCut.o
+
+# target to build an object file
+PP6EnergyCut.cpp.o:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6EnergyCut.cpp.o
+.PHONY : PP6EnergyCut.cpp.o
+
+PP6EnergyCut.i: PP6EnergyCut.cpp.i
+.PHONY : PP6EnergyCut.i
+
+# target to preprocess a source file
+PP6EnergyCut.cpp.i:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6EnergyCut.cpp.i
+.PHONY : PP6EnergyCut.cpp.i
+
+PP6EnergyCut.s: PP6EnergyCut.cpp.s
+.PHONY : PP6EnergyCut.s
+
+# target to generate assembly for a file
+PP6EnergyCut.cpp.s:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6EnergyCut.cpp.s
+.PHONY : PP6EnergyCut.cpp.s
+
 PP6FourVector.o: PP6FourVector.cpp.o
 .PHONY : PP6FourVector.o
 
@@ -368,6 +464,30 @@ PP6FourVector.cpp.s:
 	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6FourVector.cpp.s
 .PHONY : PP6FourVector.cpp.s
 
+PP6MassCut.o: PP6MassCut.cpp.o
+.PHONY : PP6MassCut.o
+
+# target to build an object file
+PP6MassCut.cpp.o:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6MassCut.cpp.o
+.PHONY : PP6MassCut.cpp.o
+
+PP6MassCut.i: PP6MassCut.cpp.i
+.PHONY : PP6MassCut.i
+
+# target to preprocess a source file
+PP6MassCut.cpp.i:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6MassCut.cpp.i
+.PHONY : PP6MassCut.cpp.i
+
+PP6MassCut.s: PP6MassCut.cpp.s
+.PHONY : PP6MassCut.s
+
+# target to generate assembly for a file
+PP6MassCut.cpp.s:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6MassCut.cpp.s
+.PHONY : PP6MassCut.cpp.s
+
 PP6Math.o: PP6Math.cpp.o
 .PHONY : PP6Math.o
 
@@ -391,6 +511,30 @@ PP6Math.s: PP6Math.cpp.s
 PP6Math.cpp.s:
 	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6Math.cpp.s
 .PHONY : PP6Math.cpp.s
+
+PP6MomentumCut.o: PP6MomentumCut.cpp.o
+.PHONY : PP6MomentumCut.o
+
+# target to build an object file
+PP6MomentumCut.cpp.o:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6MomentumCut.cpp.o
+.PHONY : PP6MomentumCut.cpp.o
+
+PP6MomentumCut.i: PP6MomentumCut.cpp.i
+.PHONY : PP6MomentumCut.i
+
+# target to preprocess a source file
+PP6MomentumCut.cpp.i:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6MomentumCut.cpp.i
+.PHONY : PP6MomentumCut.cpp.i
+
+PP6MomentumCut.s: PP6MomentumCut.cpp.s
+.PHONY : PP6MomentumCut.s
+
+# target to generate assembly for a file
+PP6MomentumCut.cpp.s:
+	cd /home/epp/phrhzv/mpagspp6/pp6calculator.build && $(MAKE) -f PP6Lib/CMakeFiles/pp6lib.dir/build.make PP6Lib/CMakeFiles/pp6lib.dir/PP6MomentumCut.cpp.s
+.PHONY : PP6MomentumCut.cpp.s
 
 PP6Particle.o: PP6Particle.cpp.o
 .PHONY : PP6Particle.o
@@ -479,6 +623,9 @@ help:
 	@echo "... package_source"
 	@echo "... pp6lib"
 	@echo "... rebuild_cache"
+	@echo "... PP6Cut.o"
+	@echo "... PP6Cut.i"
+	@echo "... PP6Cut.s"
 	@echo "... PP6Day1Menu.o"
 	@echo "... PP6Day1Menu.i"
 	@echo "... PP6Day1Menu.s"
@@ -500,12 +647,27 @@ help:
 	@echo "... PP6Day4Menu.o"
 	@echo "... PP6Day4Menu.i"
 	@echo "... PP6Day4Menu.s"
+	@echo "... PP6Day4MuonAnalysis.o"
+	@echo "... PP6Day4MuonAnalysis.i"
+	@echo "... PP6Day4MuonAnalysis.s"
+	@echo "... PP6Day5Menu.o"
+	@echo "... PP6Day5Menu.i"
+	@echo "... PP6Day5Menu.s"
+	@echo "... PP6EnergyCut.o"
+	@echo "... PP6EnergyCut.i"
+	@echo "... PP6EnergyCut.s"
 	@echo "... PP6FourVector.o"
 	@echo "... PP6FourVector.i"
 	@echo "... PP6FourVector.s"
+	@echo "... PP6MassCut.o"
+	@echo "... PP6MassCut.i"
+	@echo "... PP6MassCut.s"
 	@echo "... PP6Math.o"
 	@echo "... PP6Math.i"
 	@echo "... PP6Math.s"
+	@echo "... PP6MomentumCut.o"
+	@echo "... PP6MomentumCut.i"
+	@echo "... PP6MomentumCut.s"
 	@echo "... PP6Particle.o"
 	@echo "... PP6Particle.i"
 	@echo "... PP6Particle.s"

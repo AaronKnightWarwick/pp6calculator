@@ -14,6 +14,8 @@
 
 /home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day4Menu.hpp
 
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Lib/PP6Day5Menu.hpp
+
 /home/epp/phrhzv/mpagspp6/pp6calculator.git/pp6calculator.cpp
 iostream
 -
@@ -27,4 +29,6 @@ PP6Day3Menu.hpp
 /home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Day3Menu.hpp
 PP6Day4Menu.hpp
 /home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Day4Menu.hpp
+PP6Day5Menu.hpp
+/home/epp/phrhzv/mpagspp6/pp6calculator.git/PP6Day5Menu.hpp
 

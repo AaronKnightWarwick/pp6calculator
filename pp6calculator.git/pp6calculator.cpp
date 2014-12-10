@@ -11,6 +11,7 @@
 #include "PP6Day2Menu.hpp"
 #include "PP6Day3Menu.hpp"
 #include "PP6Day4Menu.hpp"
+#include "PP6Day5Menu.hpp"
 
 //----------Main Code----------
 //----------=========----------
@@ -26,11 +27,12 @@ int main()
     std::cout << "PP6Calculator - Main Menu" << std::endl;
     std::cout << "=========================" << std::endl;
     std::cout << "                         " << std::endl;
-    std::cout << "Please enter which operation you wish to perform" << std::endl;
-    std::cout << "1 - Day 1 basic mathematical operations" << std::endl;
-    std::cout << "2 - Day 2 array operations" << std::endl;
-    std::cout << "3 - Day 3 four vector operations" << std::endl;
-    std::cout << "4 - Day 4 standard library operations" << std::endl;
+    std::cout << "Please enter which operation you wish to perform:" << std::endl;
+    std::cout << "Enter '1' for day 1 basic mathematical operations" << std::endl;
+    std::cout << "Enter '2' for day 2 array operations" << std::endl;
+    std::cout << "Enter '3' for day 3 four vector operations" << std::endl;
+    std::cout << "Enter '4' for day 4 standard library operations" << std::endl;
+    std::cout << "Enter '5' for day 5" << std::endl;
     std::cout << "Enter 'q' to quit" << std::endl;
     std::cout << "                 " << std::endl;
 
@@ -59,8 +61,7 @@ int main()
       pp6day4_menu();
     }
     else if(menu == '5'){
-      std::cout << "Day 5 menu - currently under construction" << std::endl;
-      //pp6day6_menu();
+      pp6day5_menu();
     }
     else{
       std::cerr << "[ERROR] Operation '" << menu << "' not recognised."
