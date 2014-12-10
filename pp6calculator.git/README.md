@@ -5,7 +5,7 @@ course on software development with C++.
 
 Authors
 -------
-- Ben Morgan
+- Aaron Knight
 
 License
 -------
