@@ -1,5 +1,6 @@
-// PP6Cut.cpp : Implementation of PP6Cut
-//
+//----------PP6Cut.cpp----------
+//----------==========----------
+
 #include "PP6Cut.hpp"
 
 std::istream& operator>>( std::istream& in, Cut::CutType& type )

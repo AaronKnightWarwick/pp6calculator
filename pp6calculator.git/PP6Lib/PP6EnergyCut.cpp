@@ -1,5 +1,6 @@
-// PP6EnergyCut.cpp : Implementation of PP6EnergyCut
-//
+//----------PP6EnergyCut.cpp----------
+//----------================----------
+
 #include "PP6EnergyCut.hpp"
 
 #include <cstdlib>
@@ -9,10 +10,6 @@
 #include "PP6Math.hpp"
 #include "PP6Particle.hpp"
 #include "PP6ThreeVector.hpp"
-
-// The constructors set the cut type along with the value(s).
-// In the case of the double-sided cut there is also a check that the arguments
-// are the right way around.
 
 EnergyCut::EnergyCut( const double lowerValue, const double upperValue ) :
     type_( Range ),
@@ -29,16 +26,13 @@ EnergyCut::EnergyCut( const CutType type, const double value ) :
 {
 }
 
-void EnergyCut::checkValidity()
-{
-  // Check that the two cut values are the right way around, if not swap them
-  if ( lowerValue_ > upperValue_ ) {
+void EnergyCut::checkValidity(){
+  if( lowerValue_ > upperValue_ ){
     swap( lowerValue_, upperValue_ );
   }
 }
 
-bool EnergyCut::select(const Particle& input) const
-{
+bool EnergyCut::select(const Particle& input) const{
   switch ( type_ ) {
     case Range:
       return this->rangeCut( input );
@@ -52,18 +46,14 @@ bool EnergyCut::select(const Particle& input) const
   }
 }
 
-std::vector<Particle> EnergyCut::select(const std::vector<Particle>& input) const
-{
-  // Construct an empty vector to hold the selected Particles
+std::vector<Particle> EnergyCut::select(const std::vector<Particle>& input) const{
   std::vector<Particle> selected;
   selected.reserve( input.size() );
 
-  // Loop through the input vector, checking each Particle
-  // If it passes add it into the selected list
   std::vector<Particle>::const_iterator iter = input.begin();
   std::vector<Particle>::const_iterator end = input.end();
-  for ( ; iter != end; ++iter ) {
-    if ( this->select( (*iter) ) ) {
+  for( ; iter != end; ++iter ){
+    if( this->select( (*iter) ) ){
       selected.push_back( (*iter) );
     }
   }
@@ -71,32 +61,35 @@ std::vector<Particle> EnergyCut::select(const std::vector<Particle>& input) cons
   return selected;
 }
 
-bool EnergyCut::rangeCut(const Particle& input) const
-{
+bool EnergyCut::rangeCut(const Particle& input) const{
   double mass = input.getEnergy();
-  if ( mass > lowerValue_ && mass < upperValue_ ) {
+  if( mass > lowerValue_ && mass < upperValue_ ){
     return true;
-  } else {
+  } 
+
+  else {
     return false;
   }
 }
 
-bool EnergyCut::lessThanCut(const Particle& input) const
-{
+bool EnergyCut::lessThanCut(const Particle& input) const{
   double mass = input.getEnergy();
-  if ( mass < upperValue_ ) {
+  if( mass < upperValue_ ){
     return true;
-  } else {
+  } 
+
+  else {
     return false;
   }
 }
 
-bool EnergyCut::greaterThanCut(const Particle& input) const
-{
+bool EnergyCut::greaterThanCut(const Particle& input) const{
   double mass = input.getEnergy();
-  if ( mass > lowerValue_ ) {
+  if( mass > lowerValue_ ){
     return true;
-  } else {
+  } 
+
+  else {
     return false;
   }
 }
