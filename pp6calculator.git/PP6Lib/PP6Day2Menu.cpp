@@ -21,7 +21,6 @@
 //----------=========----------
 
 void pp6day2_menu(){
-
   double res; 
   char menu2;
 
@@ -30,10 +29,10 @@ void pp6day2_menu(){
     std::cout << "PP6Calculator - Day 2 Menu" << std::endl;
     std::cout << "==========================" << std::endl;
     std::cout << "                          " << std::endl;
-    std::cout << "Please enter the operation you wish to perform:" << std::endl;
+    std::cout << "Please enter the operation you wish like to perform:" << std::endl;
     std::cout << "Enter '1' to swap two numbers" << std::endl;
     std::cout << "Enter '2' to sort an array of numbers" << std::endl;
-    std::cout << "Enter '3' to generate and analyse N random 4-Vectors" << std::endl;
+    std::cout << "Enter '3' to generate and analyse N random 4 vectors" << std::endl;
     std::cout << "Enter '4' to analyse input files for muon pairs" << std::endl;
     std::cout << "Enter 'q' to quit" << std::endl;
     std::cout << "                 " << std::endl;
@@ -50,7 +49,7 @@ void pp6day2_menu(){
     if(menu2 == 'q'){
       break;
     }
-    
+
     else if(menu2 == '1'){
       double a, b;
       std::cout << "Enter the first number: ";
@@ -64,6 +63,7 @@ void pp6day2_menu(){
       std::cout << "After swap (a,b) = (" << a << ", " << b << ")"
                 << std::endl; 
     }
+    
     else if(menu2 == '2'){
       int arraySize;
       std::cout << "Enter the size of the array: ";
@@ -85,20 +85,23 @@ void pp6day2_menu(){
         
         delete [] currentArray;
       }
+      
       else{
         std::cerr << "[ERROR]: Array size must be greater than 0" << std::endl;
       }
     }
+
     else if(menu2 == '3'){
       res = pp6day2_vectoranalysis();
     }
-
+    
     else if(menu2 == '4'){
       res = pp6day2_muonanalysis();
     }
-
+    
     else{
-      std::cerr << "[ERROR] Operation '" << menu2 << "' not recognised." << std::endl;
+      std::cerr << "[ERROR] Operation '" << menu2 << "' not recognised."
+                << std::endl;
       continue;
     }
 

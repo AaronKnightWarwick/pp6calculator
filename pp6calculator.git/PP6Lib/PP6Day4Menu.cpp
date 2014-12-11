@@ -32,7 +32,9 @@ int pp6day4_io_pdg() {
   FileReader dataBase(dbtFilename);
 
   if(!dataBase.isValid()){
-    std::cerr << "[pp6day4_io_pdg:error] " << dbtFilename << " is not a valid file"
+    std::cerr << "[pp6day4_io_pdg:error] "
+              << dbtFilename
+              << " is not a valid file"
               << std::endl;
     return 1;
   } 
@@ -43,9 +45,9 @@ int pp6day4_io_pdg() {
     std::vector<int> particleCharge;
     std::vector<double> particleMass;
 
-    while (dataBase.nextLine()){
+    while(dataBase.nextLine()){
       particleName.push_back(dataBase.getField<std::string>(1));
-      if(dataBase.inputFailed()){
+      if (dataBase.inputFailed()) {
         std::cout << "Could not get field 1 as std::string" << std::endl;
         continue;
       }
@@ -76,8 +78,8 @@ int pp6day4_io_pdg() {
     std::vector<double>::iterator massIter = particleMass.begin();
   
     for( ; nameIter != stopCond; ++nameIter, ++pdgIter, ++chargeIter, ++massIter){
-      std::cout << *nameIter << " " << *pdgIter << " " << *chargeIter << " " << *massIter
-                << std::endl;
+      std::cout << *nameIter << " " << *pdgIter << " " << *chargeIter << " "
+                << *massIter << std::endl;
     }
   }
 
@@ -95,7 +97,7 @@ int pp6day4_check_particleinfo() {
   if(!dataBase.size()){
     std::cout << "fail" << std::endl;
     return 1;
-  } 
+  }
 
   else{
     std::cout << "ok" << std::endl;
@@ -122,7 +124,7 @@ int pp6day4_check_particleinfo() {
   }
 
   std::cout << "Checking ParticleInfo returns +ve mass for mu-... ";
-  if(dataBase.getMassMeV(13) <= 0.0) {
+  if(dataBase.getMassMeV(13) <= 0.0){
     std::cout << "fail" << std::endl;
     return 1;
   } 
@@ -132,10 +134,10 @@ int pp6day4_check_particleinfo() {
   }
 
   std::cout << "Checking ParticleInfo returns +ve mass for mu+... ";
-  if(dataBase.getMassMeV(-13) <= 0.0){
+  if(dataBase.getMassMeV(-13) <= 0.0){ 
     std::cout << "fail" << std::endl;
     return 1;
-  } 
+  }
 
   else{
     std::cout << "ok" << std::endl;
@@ -175,7 +177,7 @@ int pp6day4_algorithm_demo() {
 //----------Main Code----------
 //----------=========----------
 
-void pp6day4_menu(){
+void pp6day4_menu() {
   double res; 
   char menu4;
 
@@ -195,6 +197,7 @@ void pp6day4_menu(){
     std::cout << "                 " << std::endl;
     
     std::cin >> menu4;
+      
     if(!std::cin){
       std::cerr << "[ERROR] User input error" << std::endl;
       std::cin.clear();
@@ -205,18 +208,19 @@ void pp6day4_menu(){
     if(menu4 == 'q'){
       break;
     }
-
+  
     else if(menu4 == '1'){
       res = pp6day4_io_pdg();
     }
-
+    
     else if(menu4 == '2'){
       res = pp6day4_check_particleinfo();
     }
-
+    
     else if(menu4 == '3'){
       res = pp6day4_algorithm_demo();
     }
+    
     else if(menu4 == '4'){
       res = pp6day4_muonanalysis();
     }

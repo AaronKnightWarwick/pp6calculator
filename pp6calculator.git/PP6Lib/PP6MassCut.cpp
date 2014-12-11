@@ -11,6 +11,7 @@
 #include "PP6Particle.hpp"
 #include "PP6ThreeVector.hpp"
 
+
 MassCut::MassCut( const double lowerValue, const double upperValue ) :
     type_( Range ),
     lowerValue_( lowerValue ),
@@ -78,7 +79,7 @@ bool MassCut::lessThanCut(const Particle& input) const{
     return true;
   } 
   
-  else {
+  else{ 
     return false;
   }
 }
@@ -89,7 +90,7 @@ bool MassCut::greaterThanCut(const Particle& input) const{
     return true;
   } 
 
-  else {
+  else{
     return false;
   }
 }

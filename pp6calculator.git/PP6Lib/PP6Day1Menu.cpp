@@ -17,8 +17,7 @@
 //----------Main Code----------
 //----------=========----------
 
-void pp6day1_menu() {
-
+void pp6day1_menu(){
   double res, ans1, ans2;
   char menu1;
   
@@ -26,21 +25,21 @@ void pp6day1_menu() {
     std::cout << "                          " << std::endl;
     std::cout << "PP6Calculator - Day 1 Menu" << std::endl;
     std::cout << "==========================" << std::endl;
-    std::cout << "                          " << std::endl;
     std::cout << "Please enter the operation you wish to perform:" << std::endl;
     std::cout << "Enter '1' for addition" << std::endl;
     std::cout << "Enter '2' for subtraction" << std::endl;
     std::cout << "Enter '3' for multiplication" << std::endl;
     std::cout << "Enter '4' for division" << std::endl;
-    std::cout << "Enter '5' for the intercept of a straight" << std::endl;
-    std::cout << "Enter '6' for a quadratic solver" << std::endl;
-    std::cout << "Enter '7' for the length of 3-Vector" << std::endl;
-    std::cout << "Enter '8' for the length of 4-Vector" << std::endl;
+    std::cout << "Enter '5' for the intercept program" << std::endl;
+    std::cout << "Enter '6' for the quadratic solver program" << std::endl;
+    std::cout << "Enter '7' for the length of 3 vector program" << std::endl;
+    std::cout << "Enter '8' for the length of 4 vector program" << std::endl;
     std::cout << "Enter '9' for the invariant mass of two particles" << std::endl;
     std::cout << "Enter 'q' to quit" << std::endl;
     std::cout << "                 " << std::endl;
     
     std::cin >> menu1;
+      
     if(!std::cin){
       std::cerr << "[ERROR] User input error" << std::endl;
       std::cin.clear();
@@ -51,8 +50,8 @@ void pp6day1_menu() {
     if(menu1 == 'q'){
       break;
     }
-    else if((menu1 == '1') || (menu1 == '2') || (menu1 == '3') || (menu1 == '4'))
-    {
+
+    else if((menu1 == '1') || (menu1 == '2') || (menu1 == '3') || (menu1 == '4')){
       double a, b;
       std::cout << "Enter a value for 'a': ";
       a = getNumber();
@@ -62,16 +61,20 @@ void pp6day1_menu() {
       if(menu1 == '1'){
         res = add(a, b, ans1);
       }
+      
       else if(menu1 == '2'){
         res = subtract(a, b, ans1);
       }
+
       else if(menu1 == '3'){
         res = multiply(a, b, ans1);
       }
+
       else if(menu1 == '4'){
         res = divide(a, b, ans1);
       }
     }
+    
     else if(menu1 == '5'){
       double m, c;
 
@@ -81,6 +84,7 @@ void pp6day1_menu() {
       c = getNumber();
       res = intercept(m, c, ans1);
     }
+
     else if(menu1 == '6'){
       double a, b, c;
 
@@ -93,6 +97,7 @@ void pp6day1_menu() {
       
       res = quadratic(a, b, c, ans1, ans2);
     }
+
     else if(menu1 == '7'){
       double x, y, z;
 
@@ -105,6 +110,7 @@ void pp6day1_menu() {
 
       res = length(x, y, z, ans1);
     }
+
     else if(menu1 == '8'){
       double x, y, z, t;
 
@@ -119,8 +125,9 @@ void pp6day1_menu() {
       
       res = length(t, x, y, z, ans1);
     }
+
     else if(menu1 == '9'){
-      double E1, px1, py1, pz1, E2, px2, py2, pz2;
+      double e1, px1, py1, pz1, e2, px2, py2, pz2;
 
       std::cout << "Enter the px value for the first particle: ";
       px1 = getNumber();
@@ -129,7 +136,7 @@ void pp6day1_menu() {
       std::cout << "Enter the pz value for the first particle: ";
       pz1 = getNumber();
       std::cout << "Enter the e value for the first particle: ";
-      E1 = getNumber();
+      e1 = getNumber();
 
       std::cout << "Enter the px value for the second particle: ";
       px2 = getNumber();
@@ -138,10 +145,11 @@ void pp6day1_menu() {
       std::cout << "Enter the pz value for the second particle: ";
       pz2 = getNumber();
       std::cout << "Enter the e value for the second particle: ";
-      E2 = getNumber();
+      e2 = getNumber();
 
-      res = inv_mass(E1, px1, py1, pz1, E2, px2, py2, pz2, ans1);
+      res = inv_mass(e1, px1, py1, pz1, e2, px2, py2, pz2, ans1);
     }
+    
     else{
       std::cerr << "[ERROR] Operation '" << menu1 << "' not recognised."
                 << std::endl;
@@ -155,11 +163,12 @@ void pp6day1_menu() {
     }
 
     if(menu1 == '6'){
-      std::cout << "[RESULT]: positive_root: " << ans1 << std::endl;
-      std::cout << "[RESULT]: negative_root: " << ans2 << std::endl;
+      std::cout << "[result]: positive_root: " << ans1 << std::endl;
+      std::cout << "[result]: negative_root: " << ans2 << std::endl;
     }
+
     else{
-      std::cout << "[RESULT]: " << ans1 << std::endl;
+      std::cout << "[result]: " << ans1 << std::endl;
     }
   }
 }

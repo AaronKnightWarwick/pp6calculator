@@ -73,7 +73,7 @@ void pp6day3_menu(){
       std::cout << "[result]: interval = " << iV->interval() << std::endl;
       destroyFourVector(iV);    
     }
-
+   
     else if(menu3 == '2'){
       iV = userCreateFourVector();
 
@@ -86,7 +86,7 @@ void pp6day3_menu(){
         destroyFourVector(iV);
       }
     }
-
+    
     else if(menu3 == '3'){
       std::cout << "Details for 1st FourVector:" << std::endl;
       iV = userCreateFourVector();
@@ -97,11 +97,11 @@ void pp6day3_menu(){
       destroyFourVector(iV);
       destroyFourVector(iU);
     }
-
+ 
     else if(menu3 == '4'){
       res = pp6day3_muonanalysis();
     }
-
+    
     else{
       std::cerr << "[ERROR] Operation '" << menu3 << "' not recognised."
                 << std::endl;

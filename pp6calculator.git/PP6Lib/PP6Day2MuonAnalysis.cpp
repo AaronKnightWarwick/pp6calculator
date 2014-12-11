@@ -1,23 +1,28 @@
-// PP6Day2MuonAnalysis.cpp : Definition of PP6Day2MuonAnalysis functions
-//
+//----------PP6Day2MuonAnalysis.cpp----------
+//----------=======================----------
+
 #include "PP6Day2MuonAnalysis.hpp"
 
-// Standard Library
+//----------Standard Library----------
+//----------================----------
+
 #include <iostream>
 #include <cmath>
 
-// Third Party
+//----------Third Party----------
+//----------===========----------
+
 #include "FileReader.hpp"
 
-// This Project
+//----------This Project----------
+//----------============----------
+
 #include "PP6Math.hpp"
 
-//! Count number of muons and antimuons in run file with specific run tag
 int countMuons(const std::string& inputFile, const std::string& runName,
                int& numberOfMuons, int& numberOfAntiMuons) {
-  // Create a filereader and check its validity
   FileReader counter(inputFile);
-  if (!counter.isValid()) {
+  if(!counter.isValid()){
     std::cerr << "[countMuonPairs:error] "
               << inputFile
               << " is not valid"
@@ -30,14 +35,12 @@ int countMuons(const std::string& inputFile, const std::string& runName,
 
   std::string particleName, dataID;
 
-  while (counter.nextLine()) {
-    // Valid lines should begin with an integer, continue without error
-    // to skip header
+  while(counter.nextLine()){
     counter.getFieldAsInt(1);
-    if (counter.inputFailed()) continue;
+    if(counter.inputFailed()) continue;
 
     particleName = counter.getFieldAsString(2);
-    if (counter.inputFailed()) {
+    if(counter.inputFailed()){
       std::cerr << "[countMuonPairs:error] Field 2 of "
                 << inputFile
                 << " is not a string"
@@ -46,7 +49,7 @@ int countMuons(const std::string& inputFile, const std::string& runName,
     }
 
     dataID = counter.getFieldAsString(6);
-    if (counter.inputFailed()) {
+    if(counter.inputFailed()){
       std::cerr << "[countMuonPairs:error] Field 6 of "
                 << inputFile
                 << " is not a string"
@@ -54,37 +57,32 @@ int countMuons(const std::string& inputFile, const std::string& runName,
       return 1;
     }
 
-    if (dataID == runName) {
-      if (particleName == "mu-") numberOfMuons++;
-      if (particleName == "mu+") numberOfAntiMuons++;
+    if(dataID == runName){
+      if(particleName == "mu-") numberOfMuons++;
+      if(particleName == "mu+") numberOfAntiMuons++;
     }
   }
   return 0;
 }
 
-
 int pp6day2_muonanalysis() {
   std::string muonFile;
-  int resultCode(0);
+  int res;
 
-  // Obtain filename from user
   std::cout << "Enter filename to analyse: ";
   muonFile = getString();
 
   std::string runID("run4.dat");
-  int numberOfMuons(0), numberOfAntiMuons(0);
+  int numberOfMuons, numberOfAntiMuons;
 
-  // Count number of muons/antimuons in input file
-  resultCode = countMuons(muonFile, runID, numberOfMuons, numberOfAntiMuons);
-  if (resultCode) {
+  res = countMuons(muonFile, runID, numberOfMuons, numberOfAntiMuons);
+  if(res){
     std::cerr << "[pp6day2_muonanalysis:error] Failed to count muons in "
               << muonFile
               << std::endl;
-    return resultCode;
+    return res;
   }
 
-  //--------------------------------------------------------------------
-  // - Create arrays to hold muon data
   int *muonEventNumber(new int[numberOfMuons]);
   double *muonEnergy(new double[numberOfMuons]);
   double *muonPx(new double[numberOfMuons]);
@@ -97,25 +95,22 @@ int pp6day2_muonanalysis() {
   double *antimuonPy(new double[numberOfAntiMuons]);
   double *antimuonPz(new double[numberOfAntiMuons]);
 
-  // - Read in data
-  int eventNumber(0);
+  int eventNumber;
   std::string particleName, dataID;
-  double particlePx(0), particlePy(0), particlePz(0);
-  double particlePtot(0);
+  double particlePx, particlePy, particlePz;
+  double particlePtot;
   const double muonMass(0.105658366);
 
   FileReader muonReader(muonFile);
-  int muonCounter(0);
-  int antimuonCounter(0);
+  int muonCounter;
+  int antimuonCounter;
   
-  while (muonReader.nextLine()) {
-     // Valid lines should begin with an integer, continue without error
-    // to skip header
+  while(muonReader.nextLine()){
     eventNumber = muonReader.getFieldAsInt(1);
-    if (muonReader.inputFailed()) continue;
+    if(muonReader.inputFailed()) continue;
 
     particleName = muonReader.getFieldAsString(2);
-    if (muonReader.inputFailed()) {
+    if(muonReader.inputFailed()){
       std::cerr << "[pp6day2_muonanalysis:error] Field 2 of "
                 << muonFile
                 << " is not a string"
@@ -124,7 +119,7 @@ int pp6day2_muonanalysis() {
     }
 
     dataID = muonReader.getFieldAsString(6);
-    if (muonReader.inputFailed()) {
+    if(muonReader.inputFailed()){
       std::cerr << "[pp6day2_muonanalysis:error] Field 6 of "
                 << muonFile
                 << " is not a string"
@@ -132,10 +127,9 @@ int pp6day2_muonanalysis() {
       break;
     }
 
-    if (dataID == runID) {
-      // Read the physics data
+    if(dataID == runID){
       particlePx = muonReader.getFieldAsDouble(3);
-      if (muonReader.inputFailed()) {
+      if(muonReader.inputFailed()){
       std::cerr << "[pp6day2_muonanalysis:error] Field 3 of "
                 << muonFile
                 << " is not a double"
@@ -144,7 +138,7 @@ int pp6day2_muonanalysis() {
       }
 
       particlePy = muonReader.getFieldAsDouble(4);
-      if (muonReader.inputFailed()) {
+      if(muonReader.inputFailed()){
       std::cerr << "[pp6day2_muonanalysis:error] Field 4 of "
                 << muonFile
                 << " is not a double"
@@ -153,7 +147,7 @@ int pp6day2_muonanalysis() {
       }
 
       particlePz = muonReader.getFieldAsDouble(5);
-      if (muonReader.inputFailed()) {
+      if(muonReader.inputFailed()){
       std::cerr << "[pp6day2_muonanalysis:error] Field 5 of "
                 << muonFile
                 << " is not a double"
@@ -161,8 +155,7 @@ int pp6day2_muonanalysis() {
       break;
       }
 
-      if (particleName == "mu-") {
-        // Fill muon data
+      if(particleName == "mu-"){
         muonEventNumber[muonCounter] = eventNumber; 
         muonPx[muonCounter] = particlePx;
         muonPy[muonCounter] = particlePy;
@@ -172,8 +165,7 @@ int pp6day2_muonanalysis() {
                                        muonMass*muonMass); 
         ++muonCounter;
       }
-      if (particleName == "mu+") {
-        // Fill antimuon data
+      if(particleName == "mu+"){
         antimuonEventNumber[antimuonCounter] = eventNumber; 
         antimuonPx[antimuonCounter] = particlePx;
         antimuonPy[antimuonCounter] = particlePy;
@@ -186,8 +178,7 @@ int pp6day2_muonanalysis() {
     }
   }
 
-  if (muonReader.inputFailed()) {
-    // - Clean up and return
+  if(muonReader.inputFailed()){
     std::cerr << "[pp6day2_muonanalysis:error] Failed to extract physics data from "
               << muonFile 
               << std::endl;
@@ -205,15 +196,11 @@ int pp6day2_muonanalysis() {
     return 1;
   }
 
-  //--------------------------------------------------------------------
-  // - Analyse data...
-  // Invariant mass and indexing array
   double *invariantMass(new double[numberOfMuons * numberOfAntiMuons]);
   int *muonPairIndex(new int[numberOfMuons * numberOfAntiMuons]);
   
-  // - Loop over mu-/mu+ arrays, calculating invariant masses as we go
-  for (int i(0); i < numberOfAntiMuons; ++i) {
-    for (int j(0); j < numberOfMuons; ++j) {
+  for(int i(0); i < numberOfAntiMuons; ++i){
+    for(int j(0); j < numberOfMuons; ++j){
       inv_mass(muonEnergy[j], muonPx[j], muonPy[j], muonPz[j],
                antimuonEnergy[i], antimuonPx[i], antimuonPy[i], 
                antimuonPz[i],
@@ -222,13 +209,9 @@ int pp6day2_muonanalysis() {
     }
   }
 
-  // Use associative sort to sort masses
   associative_sort(invariantMass, muonPairIndex, 
                    numberOfMuons * numberOfAntiMuons);
   
-  //--------------------------------------------------------------------
-  // - Present results
-  //
   std::cout << "Results:" << std::endl;
   std::cout << "========" << std::endl;
   std::cout << "Analysed File : " << muonFile << std::endl;
@@ -236,7 +219,7 @@ int pp6day2_muonanalysis() {
   std::cout << "Number of AntiMuons = " << numberOfAntiMuons << std::endl;
   std::cout << "----------------------------" << std::endl;
 
-  for (int i(0); i < 10; ++i) {
+  for(int i; i < 10; ++i){
     int muonIndex(muonPairIndex[i] % numberOfMuons);
     int antimuonIndex((muonPairIndex[i] - muonIndex) / numberOfMuons);
 
@@ -260,8 +243,6 @@ int pp6day2_muonanalysis() {
               << std::endl;
   }
 
-
-  // - Clean up arrays
   delete [] muonEventNumber;
   delete [] muonEnergy;
   delete [] muonPx;

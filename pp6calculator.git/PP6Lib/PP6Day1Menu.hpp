@@ -1,4 +1,4 @@
-// File - PP6Day1Menu.hpp
+// File -  PP6Day1Menu.hpp
 // Author - Aaron Knight
 // Brief - Declaration of PP6 Day 1 Menu functions
 
@@ -8,3 +8,4 @@
 void pp6day1_menu();
 
 #endif // PP6CALCULATOR_PP6DAY1MENU_HH
+

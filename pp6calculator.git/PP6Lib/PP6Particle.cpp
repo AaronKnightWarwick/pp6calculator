@@ -1,4 +1,6 @@
-// PP6FourVector.cpp : Implementation of PP6FourVector
+//----------PP6FourVector.cpp----------
+//----------=================----------
+
 #include "PP6Particle.hpp"
 
 #include <cmath>
@@ -83,10 +85,8 @@ Particle::Particle(const std::string& name, const double px, const double py, co
   this->setThreeMomentum(mom);
 }
 
-Particle& Particle::operator=(const Particle& other)
-{
-  if ( this != &other )
-  {
+Particle& Particle::operator=(const Particle& other){
+  if( this != &other ){
     this->pdg_code_ = other.pdg_code_;
     this->name_ = other.name_;
     this->mass_ = other.mass_;
@@ -96,41 +96,35 @@ Particle& Particle::operator=(const Particle& other)
   return *this;
 }
 
-void Particle::setPDGCode(const int pdg_code)
-{
+void Particle::setPDGCode(const int pdg_code){
   pdg_code_ = pdg_code;
   name_ = ParticleInfo::Instance().getName(pdg_code);
   mass_ = ParticleInfo::Instance().getMassGeV(pdg_code);
   this->setThreeMomentum(this->getThreeMomentum());
 }
 
-void Particle::setThreeMomentum(const ThreeVector& p)
-{
+void Particle::setThreeMomentum(const ThreeVector& p){
   const double mod_p = p.length();
   const double E = sqrt(mod_p*mod_p + mass_*mass_);
   momentum_.setT(E);
   momentum_.setThreeVector(p);
 }
 
-void Particle::setThreeMomentum(const double px, const double py, const double pz)
-{
+void Particle::setThreeMomentum(const double px, const double py, const double pz){
   ThreeVector p(px, py, pz);
   this->setThreeMomentum(p);
 }
 
-int Particle::boost_z( const double velocity )
-{
+int Particle::boost_z( const double velocity ){
   return momentum_.boost_z( velocity );
 }
 
-std::ostream& operator<<( std::ostream& out, const Particle& particle )
-{
+std::ostream& operator<<( std::ostream& out, const Particle& particle ){
   out << particle.getName() << " : " << particle.getFourMomentum();
   return out;
 }
 
-std::istream& operator>>( std::istream& in, Particle& particle )
-{
+std::istream& operator>>( std::istream& in, Particle& particle ){
   std::string name;
   std::string dummy;
   FourVector p4;
@@ -141,20 +135,18 @@ std::istream& operator>>( std::istream& in, Particle& particle )
   return in;
 }
 
-double calculate_invariant_mass(const Particle& first, const Particle& second)
-{
+double calculate_invariant_mass(const Particle& first, const Particle& second){
   const FourVector& p1 = first.getFourMomentum();
   const FourVector& p2 = second.getFourMomentum();
   FourVector p_tot = p1 + p2;
   return sqrt(p_tot.interval());
 }
 
-double calculate_invariant_mass(const std::vector<Particle>& particles)
-{
+double calculate_invariant_mass(const std::vector<Particle>& particles){
   FourVector p_tot;
   std::vector<Particle>::const_iterator iter = particles.begin();
   const std::vector<Particle>::const_iterator end = particles.end();
-  for ( ; iter != end; ++iter ) {
+  for(; iter != end; ++iter){
     p_tot += iter->getFourMomentum();
   }
   return sqrt(p_tot.interval());

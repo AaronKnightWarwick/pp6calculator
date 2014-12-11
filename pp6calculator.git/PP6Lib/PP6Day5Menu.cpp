@@ -160,8 +160,8 @@ int pp6day5_test_dynamiccuts(){
   CutCollection cuts;
   std::string cutvar;
   Cut::CutType cuttype;
-  double lowervalue;
-  double uppervalue;
+  double lowervalue(0.0);
+  double uppervalue(0.0);
 
   while(reader.nextLine()){
     cutvar = reader.getField<std::string>(1);
@@ -173,11 +173,11 @@ int pp6day5_test_dynamiccuts(){
     lowervalue = reader.getField<double>(3);
     if(reader.inputFailed()) continue;
 
-    if( cuttype == Cut::Range ) {
+    if( cuttype == Cut::Range ){
       uppervalue = reader.getField<double>(4);
       if(reader.inputFailed()) continue;
 
-      if( cutvar == "mass" ) {
+      if( cutvar == "mass" ){
 	CutPtr ptr(new MassCut( lowervalue, uppervalue ));
 	cuts.push_back( ptr );
       } 
@@ -191,17 +191,19 @@ int pp6day5_test_dynamiccuts(){
 	CutPtr ptr(new MomentumCut( lowervalue, uppervalue ));
 	cuts.push_back( ptr );
       }
-    }
+    } 
 
     else{
       if( cutvar == "mass" ){
 	CutPtr ptr(new MassCut( cuttype, lowervalue ));
 	cuts.push_back( ptr );
       } 
+
       else if( cutvar == "energy" ){
 	CutPtr ptr(new EnergyCut( cuttype, lowervalue ));
 	cuts.push_back( ptr );
       } 
+
       else if( cutvar == "momentum" ){
 	CutPtr ptr(new MomentumCut( cuttype, lowervalue ));
 	cuts.push_back( ptr );
@@ -221,7 +223,7 @@ int pp6day5_test_dynamiccuts(){
 
   std::vector<Particle>::const_iterator particle_iter = selectedParticles.begin();
   std::vector<Particle>::const_iterator particle_end = selectedParticles.end();
-  for( ; particle_iter != particle_end; ++particle_iter ){
+  for ( ; particle_iter != particle_end; ++particle_iter ) {
     std::cout << (*particle_iter) << std::endl;
   }
 
@@ -240,7 +242,7 @@ void pp6day5_menu(){
     std::cout << "PP6Calculator - Day 5 Menu" << std::endl;
     std::cout << "==========================" << std::endl;
     std::cout << "                          " << std::endl;
-    std::cout << "Enter the operation you would like to perform:" << std::endl;
+    std::cout << "Please enter the operation you wish to perform:" << std::endl;
     std::cout << "Enter '1' to test MassCut with kaons and pions" << std::endl;
     std::cout << "Enter '2' to test EnergyCut with kaons and pions" << std::endl;
     std::cout << "Enter '3' to test dynamic dispatch to collection of cuts" << std::endl;
@@ -263,7 +265,7 @@ void pp6day5_menu(){
     else if(menu5 == '1'){
       res = pp6day5_test_masscut();
     }
-
+    
     else if(menu5 == '2'){
       res = pp6day5_test_energycut();
     }
@@ -271,7 +273,7 @@ void pp6day5_menu(){
     else if(menu5 == '3'){
       res = pp6day5_test_dynamiccuts();
     }
-
+    
     else{
       std::cerr << "[ERROR] Operation '" << menu5 << "' not recognised."
                 << std::endl;
@@ -279,8 +281,10 @@ void pp6day5_menu(){
     }
 
     if(res){
-      std::cerr << "[ERROR] Operation '" << menu5 << "' returned a non-zero code '" 
-		<< res << "'. Please check parameters." << std::endl;
+      std::cerr << "[ERROR] Operation '" << menu5 
+                << "' returned a non-zero code '" << res
+                << "'. Please check parameters."
+                << std::endl;
       res = 0;
       continue;
     }

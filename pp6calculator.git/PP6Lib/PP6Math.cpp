@@ -11,8 +11,8 @@
 #include <cmath>
 #include <cstdlib>
 
-//----------Arithmetic Operators----------
-//----------====================----------
+//----------Arithmetic Operations----------
+//----------=====================----------
 
 int add(double a, double b, double& answer){
   answer = a + b;
@@ -38,9 +38,16 @@ int divide(double a, double b, double& answer){
   return 0;
 }
 
-int intercept(double m, double c, double& answer){
+//----------Arithmetic Operation----------
+//----------====================----------
+
+int intercept(double m, double c, double& answer)
+{
   return divide(-c, m, answer);
 }
+
+//----------Quadratic Operation----------
+//----------===================----------
 
 int quadratic(double a, double b, double c, double& positiveRoot,
               double& negativeRoot){
@@ -48,14 +55,14 @@ int quadratic(double a, double b, double c, double& positiveRoot,
     return 1;
   }
 
-  double t(pow(b, 2) - 4 * a * c);
+  double dis(pow(b, 2) - 4 * a * c);
 
-  if(t < 0){
+  if(dis < 0){
     return 2;
   }
 
-  positiveRoot = (-b + sqrt(t)) / (2 * a);
-  negativeRoot = (-b - sqrt(t)) / (2 * a);
+  positiveRoot = (-b + sqrt(dis)) / (2 * a);
+  negativeRoot = (-b - sqrt(dis)) / (2 * a);
 
   return 0;
 } 
@@ -92,8 +99,7 @@ double length(double x, double y, double z, double& vectorlength){
   return 0;
 }
 
-double length(double t, double x, double y, double z, double& vectorlength)
-{
+double length(double t, double x, double y, double z, double& vectorlength){
   double spacelength;
   if(length(x, y, z, spacelength)){
     return 1;
@@ -110,42 +116,45 @@ double length(double t, double x, double y, double z, double& vectorlength)
   return 0;
 }
 
-int sumVectors(double *x, double *y, double *z, int size,
+int sumVectors(double *x, double *y, double *z, int size, 
                double &sumX, double &sumY, double &sumZ){
+
   if((!x) || (!y) || (!z)){
-      return 1;
-    }
+    return 1;
+  }
 
   sumX = 0;
   sumY = 0;
   sumZ = 0;
 
-  for(int i(0); i < size; ++i){
-      sumX += x[i];
-      sumY += y[i];
-      sumZ += z[i];
-    }
+  for(int i; i < size; ++i){
+    sumX += x[i];
+    sumY += y[i];
+    sumZ += z[i];
+  }
 
   return 0;
 }
 
-double inv_mass(double E1, double px1, double py1, double pz1,
-                double E2, double px2, double py2, double pz2,
-                double& invariantMass)
-{
-  double tot_E(E1 + E2);
+//----------Invariant Mass Operation----------
+//----------========================----------
+
+double inv_mass(double e1, double px1, double py1, double pz1, 
+                double e2, double px2, double py2, double pz2,
+                double& invariantMass){
+  double tot_e(e1 + e2);
   double tot_px(px1 + px2);
   double tot_py(py1 + py2);
   double tot_pz(pz1 + pz2);
 
-  if(length(tot_E, tot_px, tot_py, tot_pz, invariantMass)){
-      return 1;
-    }
-  return 0;
+  if(length(tot_e, tot_px, tot_py, tot_pz, invariantMass)){
+    return 1;
+  }
+  return 0; 
 }
 
-//----------Sorting Operations----------
-//----------==================----------
+//----------Algorithm Operations----------
+//----------====================----------
 
 int swap(double& a, double& b){
   double temp;
@@ -183,11 +192,12 @@ int basic_sort(double *arr, int size){
 
 int associative_sort(double *arr, int *index, int size){
   double *arr_t = new double[size];
-  for(int i; i < size; i++){
+  for(int i(0); i < size; i++){
     arr_t[i] = arr[i];
   }
 
   bool done(true);
+
   while(true){
     done = true;
 

@@ -8,3 +8,4 @@
 void pp6day2_menu();
 
 #endif // PP6CALCULATOR_PP6DAY2MENU_HH
+

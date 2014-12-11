@@ -11,6 +11,7 @@
 #include "PP6Particle.hpp"
 #include "PP6ThreeVector.hpp"
 
+
 EnergyCut::EnergyCut( const double lowerValue, const double upperValue ) :
     type_( Range ),
     lowerValue_( lowerValue ),
@@ -67,7 +68,7 @@ bool EnergyCut::rangeCut(const Particle& input) const{
     return true;
   } 
 
-  else {
+  else{
     return false;
   }
 }
@@ -78,7 +79,7 @@ bool EnergyCut::lessThanCut(const Particle& input) const{
     return true;
   } 
 
-  else {
+  else{
     return false;
   }
 }
