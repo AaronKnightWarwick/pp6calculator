@@ -19,6 +19,9 @@
 #include "PP6Math.hpp"
 #include "PP6Particle.hpp"
 
+//----------Main Code----------
+//----------=========----------
+
 struct EventArray {
   size_t size;
   int *ids;
@@ -34,7 +37,7 @@ EventArray* createEventArray(const size_t s) {
 }
 
 void destroyEventArray(EventArray *&p) {
-  if (p) {
+  if(p){
     p->size = 0;
     delete [] p->ids;
     p->ids = 0;
@@ -46,9 +49,11 @@ void destroyEventArray(EventArray *&p) {
 }
 
 int getPDGCode(const std::string& name) {
-  if (name == "mu-") {
+  if(name == "mu-"){
     return 13;
-  } else if (name == "mu+" ) {
+  } 
+
+  else if(name == "mu+"){
     return -13;
   }
   return 0;
@@ -58,9 +63,7 @@ int countParticles(const std::string& inputFile, const std::string& particle,
                    const std::string& runId, size_t& count) {
   FileReader counter(inputFile);
   if(!counter.isValid()){
-    std::cerr << "[countParticles:error] "
-              << inputFile
-              << " is not valid"
+    std::cerr << "[countParticles:error] " << inputFile << " is not valid"
               << std::endl;
     return 1;
   }
@@ -74,19 +77,15 @@ int countParticles(const std::string& inputFile, const std::string& particle,
 
     particleName = counter.getFieldAsString(2);
     if(counter.inputFailed()){
-      std::cerr << "[countParticles:error] Field 2 of "
-                << inputFile
-                << " is not a string"
-                << std::endl;
+      std::cerr << "[countParticles:error] Field 2 of " << inputFile
+                << " is not a string" << std::endl;
       return 1;
     }
 
     dataID = counter.getFieldAsString(6);
     if(counter.inputFailed()){
-      std::cerr << "[countParticles:error] Field 6 of "
-                << inputFile
-                << " is not a string"
-                << std::endl;
+      std::cerr << "[countParticles:error] Field 6 of "<< inputFile
+                << " is not a string" << std::endl;
       return 1;
     }
     if(dataID == runId){
@@ -99,13 +98,11 @@ int countParticles(const std::string& inputFile, const std::string& particle,
 EventArray* createParticles(const std::string& inputFile,
                             const size_t knownNumber, 
                             const std::string& particle, 
-                            const double /*mass*/, const std::string& runId) {
+                            const double, const std::string& runId) {
   FileReader counter(inputFile);
   if(!counter.isValid()){
-    std::cerr << "[createParticles:error] "
-              << inputFile
-              << " is not valid"
-              << std::endl;
+    std::cerr << "[createParticles:error] " << inputFile
+              << " is not valid" << std::endl;
     return 0;
   }
  
@@ -122,51 +119,42 @@ EventArray* createParticles(const std::string& inputFile,
 
     particleName = counter.getFieldAsString(2);
     if(counter.inputFailed()){
-      std::cerr << "[countParticles:error] Field 2 of "
-                << inputFile
-                << " is not a string"
-                << std::endl;
+      std::cerr << "[countParticles:error] Field 2 of " << inputFile
+                << " is not a string" << std::endl;
       destroyEventArray(pEA);
       return pEA;
     }
 
     dataID = counter.getFieldAsString(6);
     if(counter.inputFailed()){
-      std::cerr << "[countParticles:error] Field 6 of "
-                << inputFile
-                << " is not a string"
-                << std::endl;
+      std::cerr << "[countParticles:error] Field 6 of " << inputFile
+                << " is not a string" << std::endl;
       destroyEventArray(pEA);
       return pEA;
     }
+
     if(dataID == runId){
       if(particleName == particle){
         px = counter.getFieldAsDouble(3);
         if(counter.inputFailed()){
-          std::cerr << "[createParticles:error] Field 3 of "
-                    << inputFile
-                    << " is not a double"
-                    << std::endl;
+          std::cerr << "[createParticles:error] Field 3 of " << inputFile
+                    << " is not a double" << std::endl;
           destroyEventArray(pEA);
           return pEA;
         }
 
         py = counter.getFieldAsDouble(4);
         if(counter.inputFailed()){
-          std::cerr << "[countParticles:error] Field 4 of "
-                    << inputFile
-                    << " is not a double"
-                    << std::endl;
+          std::cerr << "[countParticles:error] Field 4 of " << inputFile
+                    << " is not a double" << std::endl;
           destroyEventArray(pEA);
           return pEA;
         }
 
         pz = counter.getFieldAsDouble(5);
         if(counter.inputFailed()){
-          std::cerr << "[countParticles:error] Field 5 of "
-                    << inputFile
-                    << " is not a double"
-                    << std::endl;
+          std::cerr << "[countParticles:error] Field 5 of " << inputFile
+                    << " is not a double" << std::endl;
           destroyEventArray(pEA);
           return pEA;
         }
@@ -191,14 +179,12 @@ EventArray* readParticles(const std::string& file,
   res = countParticles(file, particle, runId, numberOf);
   if(res){
     std::cerr << "[pp6day3_muonanalysis:error] Failed to count particles in file "
-              << file
-              << std::endl;
+              << file << std::endl;
     return 0;
   }
 
   return createParticles(file, numberOf, particle, mass, runId);
 }
-
 
 int pp6day3_muonanalysis() {
   std::string muonFile;
@@ -236,20 +222,12 @@ int pp6day3_muonanalysis() {
   for(int i; i < 10; ++i){
     int muonIndex(indices[i] % p->size);
     int antimuonIndex((indices[i] - muonIndex) / p->size);
-    std::cout << "{InvariantMass : " << invMasses[indices[i]]
-              << ",\n\t"
-              << "{Muon : "
-              << "Event = " << p->ids[muonIndex] << ", "
-              << "(E, P) = ("
-              << (p->particles[muonIndex]).getFourMomentum()
-              << ")}\n\t"
-              << "{AntiMuon : "
-              << "Event = " << q->ids[antimuonIndex] << ", "
-              << "(E, P) = ("
-              << (q->particles[antimuonIndex]).getFourMomentum()
-              << ")}\n"
-              << "}"
-              << std::endl;
+    std::cout << "{InvariantMass : " << invMasses[indices[i]] << ",\n\t" << "{Muon : "
+              << "Event = " << p->ids[muonIndex] << ", " << "(E, P) = ("
+              << (p->particles[muonIndex]).getFourMomentum() << ")}\n\t"
+              << "{AntiMuon : " << "Event = " << q->ids[antimuonIndex] << ", "
+              << "(E, P) = (" << (q->particles[antimuonIndex]).getFourMomentum()
+              << ")}\n" << "}" << std::endl;
     
   }
 

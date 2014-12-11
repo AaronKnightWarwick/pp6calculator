@@ -14,6 +14,9 @@
 
 #include "PP6Math.hpp"
 
+//----------Main Code----------
+//----------=========----------
+
 int pp6day2_vectoranalysis() {
   int numberOfVectors;
   std::cout << "Enter number of vectors to generate: ";
@@ -64,13 +67,8 @@ int pp6day2_vectoranalysis() {
       return 1;
     }
 
-    std::cout << "[Total 3-Momentum] : P("
-	      << totalMomnX << ", "
-	      << totalMomnY << ", "
-	      << totalMomnZ << "), "
-	      << "|P| = "
-	      << momnMagnitude 
-	      << std::endl;
+    std::cout << "[Total 3-Momentum] : P(" << totalMomnX << ", " << totalMomnY << ", "
+	      << totalMomnZ << "), " << "|P| = " << momnMagnitude << std::endl;
     
     if(getMeanAndStdDev(energy, numberOfVectors, meanEnergy, stddevEnergy)){
       std::cerr << "[ERROR]: Failed to calculate energy statistics" << std::endl;
@@ -83,14 +81,11 @@ int pp6day2_vectoranalysis() {
       return 1;
     }
 
-    std::cout << "[Mean Energy] : E = "
-	      << meanEnergy 
-	      << " +/- "
-	      << stddevEnergy
+    std::cout << "[Mean Energy] : E = " << meanEnergy << " +/- " << stddevEnergy
 	      << std::endl;
     
-    if (associative_sort(energy, indices, numberOfVectors)){
-	std::cerr << "[error]: Failed to sort energy array" << std::endl;
+    if(associative_sort(energy, indices, numberOfVectors)){
+	std::cerr << "[ERROR]: Failed to sort energy array" << std::endl;
 
 	delete [] energy;
 	delete [] momnX;
@@ -100,14 +95,8 @@ int pp6day2_vectoranalysis() {
 	return 1;
       }
 
-    std::cout << "[Maximum Energy] : E = "
-	      << energy[indices[0]] 
-	      << ", found at index "
-	      << indices[0]
-	      << " of " 
-	      << numberOfVectors
-	      << std::endl;
-    
+    std::cout << "[Maximum Energy] : E = " << energy[indices[0]] << ", found at index "
+	      << indices[0] << " of " << numberOfVectors << std::endl;
     
     delete [] energy;
     delete [] momnX;

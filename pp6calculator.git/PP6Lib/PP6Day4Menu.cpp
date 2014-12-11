@@ -24,6 +24,9 @@
 #include "PP6ParticleInfo.hpp"
 #include "PP6Day4MuonAnalysis.hpp"
 
+//----------Main Code----------
+//----------=========----------
+
 int pp6day4_io_pdg() {
   std::string dbtFilename;
   std::cout << "Enter path to .dbt file to be read: ";
@@ -47,7 +50,7 @@ int pp6day4_io_pdg() {
 
     while(dataBase.nextLine()){
       particleName.push_back(dataBase.getField<std::string>(1));
-      if (dataBase.inputFailed()) {
+      if(dataBase.inputFailed()){
         std::cout << "Could not get field 1 as std::string" << std::endl;
         continue;
       }
@@ -77,7 +80,7 @@ int pp6day4_io_pdg() {
     std::vector<int>::iterator chargeIter = particleCharge.begin();
     std::vector<double>::iterator massIter = particleMass.begin();
   
-    for( ; nameIter != stopCond; ++nameIter, ++pdgIter, ++chargeIter, ++massIter){
+    for(; nameIter != stopCond; ++nameIter, ++pdgIter, ++chargeIter, ++massIter){
       std::cout << *nameIter << " " << *pdgIter << " " << *chargeIter << " "
                 << *massIter << std::endl;
     }
@@ -174,7 +177,7 @@ int pp6day4_algorithm_demo() {
   return 0;
 }
 
-//----------Main Code----------
+//----------Menu Code----------
 //----------=========----------
 
 void pp6day4_menu() {

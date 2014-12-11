@@ -9,6 +9,9 @@
 #include <iostream>
 #include <sstream>
 
+//----------Main Code----------
+//----------=========----------
+
 double arctan(double y, double x){
   if(x != 0) return atan2(y, x);
   if(y == 0) return 0;

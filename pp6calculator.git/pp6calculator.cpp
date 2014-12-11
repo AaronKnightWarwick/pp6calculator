@@ -32,7 +32,7 @@ int main()
     std::cout << "Enter '2' for day 2 array operations" << std::endl;
     std::cout << "Enter '3' for day 3 four vector operations" << std::endl;
     std::cout << "Enter '4' for day 4 standard library operations" << std::endl;
-    std::cout << "Enter '5' for day 5" << std::endl;
+    std::cout << "Enter '5' for day 5 dynamic polymorphism operations" << std::endl;
     std::cout << "Enter 'q' to quit" << std::endl;
     std::cout << "                 " << std::endl;
 

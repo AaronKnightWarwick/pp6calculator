@@ -41,8 +41,7 @@ int divide(double a, double b, double& answer){
 //----------Arithmetic Operation----------
 //----------====================----------
 
-int intercept(double m, double c, double& answer)
-{
+int intercept(double m, double c, double& answer){
   return divide(-c, m, answer);
 }
 
@@ -55,14 +54,14 @@ int quadratic(double a, double b, double c, double& positiveRoot,
     return 1;
   }
 
-  double dis(pow(b, 2) - 4 * a * c);
+  double discriminant(pow(b, 2) - 4 * a * c);
 
-  if(dis < 0){
+  if(discriminant < 0){
     return 2;
   }
 
-  positiveRoot = (-b + sqrt(dis)) / (2 * a);
-  negativeRoot = (-b - sqrt(dis)) / (2 * a);
+  positiveRoot = (-b + sqrt(discriminant)) / (2 * a);
+  negativeRoot = (-b - sqrt(discriminant)) / (2 * a);
 
   return 0;
 } 
@@ -139,15 +138,15 @@ int sumVectors(double *x, double *y, double *z, int size,
 //----------Invariant Mass Operation----------
 //----------========================----------
 
-double inv_mass(double e1, double px1, double py1, double pz1, 
-                double e2, double px2, double py2, double pz2,
+double inv_mass(double E1, double px1, double py1, double pz1, 
+                double E2, double px2, double py2, double pz2,
                 double& invariantMass){
-  double tot_e(e1 + e2);
+  double tot_E(E1 + E2);
   double tot_px(px1 + px2);
   double tot_py(py1 + py2);
   double tot_pz(pz1 + pz2);
 
-  if(length(tot_e, tot_px, tot_py, tot_pz, invariantMass)){
+  if(length(tot_E, tot_px, tot_py, tot_pz, invariantMass)){
     return 1;
   }
   return 0; 

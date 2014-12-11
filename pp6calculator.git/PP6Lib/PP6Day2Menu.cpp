@@ -17,7 +17,7 @@
 #include "PP6Day2VectorAnalysis.hpp"
 #include "PP6Day2MuonAnalysis.hpp"
 
-//----------Main Code----------
+//----------Menu Code----------
 //----------=========----------
 
 void pp6day2_menu(){
@@ -57,11 +57,13 @@ void pp6day2_menu(){
       std::cout << "Enter the second number: ";
       b = getNumber();
  
-      std::cout << "Before swap (a,b) = (" << a << ", " << b << ")" 
-                << std::endl;
+      std::cout << "Before the swap a = " << a << " and b = " << b << std::endl;
+      
+      std::cout << "A number swap is being performed..." << std::endl;
+
       swap(a, b);
-      std::cout << "After swap (a,b) = (" << a << ", " << b << ")"
-                << std::endl; 
+
+      std::cout << "After the swap a = " << a << " and b = " << b << std::endl; 
     }
     
     else if(menu2 == '2'){

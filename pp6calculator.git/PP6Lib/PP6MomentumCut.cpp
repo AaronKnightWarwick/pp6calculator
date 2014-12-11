@@ -11,6 +11,9 @@
 #include "PP6Particle.hpp"
 #include "PP6ThreeVector.hpp"
 
+//----------Main Code----------
+//----------=========----------
+
 MomentumCut::MomentumCut(const double lowerValue, const double upperValue) :
     type_(Range),
     lowerValue_(lowerValue),
@@ -33,7 +36,7 @@ void MomentumCut::checkValidity(){
 }
 
 bool MomentumCut::select(const Particle& input) const{
-  switch (type_) {
+  switch (type_){
     case Range:
       return this->rangeCut(input);
     case LessThan:

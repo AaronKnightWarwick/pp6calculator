@@ -19,13 +19,14 @@
 
 #include "PP6Math.hpp"
 
+//----------Main Code----------
+//----------=========----------
+
 int countMuons(const std::string& inputFile, const std::string& runName,
                int& numberOfMuons, int& numberOfAntiMuons) {
   FileReader counter(inputFile);
   if(!counter.isValid()){
-    std::cerr << "[countMuonPairs:error] "
-              << inputFile
-              << " is not valid"
+    std::cerr << "[countMuonPairs:error] " << inputFile << " is not valid"
               << std::endl;
     return 1;
   }
@@ -41,18 +42,14 @@ int countMuons(const std::string& inputFile, const std::string& runName,
 
     particleName = counter.getFieldAsString(2);
     if(counter.inputFailed()){
-      std::cerr << "[countMuonPairs:error] Field 2 of "
-                << inputFile
-                << " is not a string"
+      std::cerr << "[countMuonPairs:error] Field 2 of " << inputFile << " is not a string"
                 << std::endl;
       return 1;
     }
 
     dataID = counter.getFieldAsString(6);
     if(counter.inputFailed()){
-      std::cerr << "[countMuonPairs:error] Field 6 of "
-                << inputFile
-                << " is not a string"
+      std::cerr << "[countMuonPairs:error] Field 6 of " << inputFile << " is not a string"
                 << std::endl;
       return 1;
     }
@@ -77,8 +74,7 @@ int pp6day2_muonanalysis() {
 
   res = countMuons(muonFile, runID, numberOfMuons, numberOfAntiMuons);
   if(res){
-    std::cerr << "[pp6day2_muonanalysis:error] Failed to count muons in "
-              << muonFile
+    std::cerr << "[pp6day2_muonanalysis:error] Failed to count muons in " << muonFile
               << std::endl;
     return res;
   }
@@ -111,47 +107,37 @@ int pp6day2_muonanalysis() {
 
     particleName = muonReader.getFieldAsString(2);
     if(muonReader.inputFailed()){
-      std::cerr << "[pp6day2_muonanalysis:error] Field 2 of "
-                << muonFile
-                << " is not a string"
-                << std::endl;
+      std::cerr << "[pp6day2_muonanalysis:error] Field 2 of " << muonFile
+                << " is not a string" << std::endl;
       break;
     }
 
     dataID = muonReader.getFieldAsString(6);
     if(muonReader.inputFailed()){
-      std::cerr << "[pp6day2_muonanalysis:error] Field 6 of "
-                << muonFile
-                << " is not a string"
-                << std::endl;
+      std::cerr << "[pp6day2_muonanalysis:error] Field 6 of " << muonFile
+                << " is not a string" << std::endl;
       break;
     }
 
     if(dataID == runID){
       particlePx = muonReader.getFieldAsDouble(3);
       if(muonReader.inputFailed()){
-      std::cerr << "[pp6day2_muonanalysis:error] Field 3 of "
-                << muonFile
-                << " is not a double"
-                << std::endl;
+      std::cerr << "[pp6day2_muonanalysis:error] Field 3 of " << muonFile
+                << " is not a double" << std::endl;
       break;
       }
 
       particlePy = muonReader.getFieldAsDouble(4);
       if(muonReader.inputFailed()){
-      std::cerr << "[pp6day2_muonanalysis:error] Field 4 of "
-                << muonFile
-                << " is not a double"
-                << std::endl;
+      std::cerr << "[pp6day2_muonanalysis:error] Field 4 of " << muonFile 
+		<< " is not a double" << std::endl;
       break;
       }
 
       particlePz = muonReader.getFieldAsDouble(5);
       if(muonReader.inputFailed()){
-      std::cerr << "[pp6day2_muonanalysis:error] Field 5 of "
-                << muonFile
-                << " is not a double"
-                << std::endl;
+      std::cerr << "[pp6day2_muonanalysis:error] Field 5 of " << muonFile
+                << " is not a double" << std::endl;
       break;
       }
 
@@ -165,6 +151,7 @@ int pp6day2_muonanalysis() {
                                        muonMass*muonMass); 
         ++muonCounter;
       }
+
       if(particleName == "mu+"){
         antimuonEventNumber[antimuonCounter] = eventNumber; 
         antimuonPx[antimuonCounter] = particlePx;
@@ -180,8 +167,8 @@ int pp6day2_muonanalysis() {
 
   if(muonReader.inputFailed()){
     std::cerr << "[pp6day2_muonanalysis:error] Failed to extract physics data from "
-              << muonFile 
-              << std::endl;
+              << muonFile << std::endl;
+
     delete [] muonEventNumber;
     delete [] muonEnergy;
     delete [] muonPx;
@@ -199,12 +186,11 @@ int pp6day2_muonanalysis() {
   double *invariantMass(new double[numberOfMuons * numberOfAntiMuons]);
   int *muonPairIndex(new int[numberOfMuons * numberOfAntiMuons]);
   
-  for(int i(0); i < numberOfAntiMuons; ++i){
-    for(int j(0); j < numberOfMuons; ++j){
-      inv_mass(muonEnergy[j], muonPx[j], muonPy[j], muonPz[j],
-               antimuonEnergy[i], antimuonPx[i], antimuonPy[i], 
-               antimuonPz[i],
-               invariantMass[i*numberOfMuons + j]);
+  for(int i; i < numberOfAntiMuons; ++i){
+    for(int j; j < numberOfMuons; ++j){
+      inv_mass(muonEnergy[j], muonPx[j], muonPy[j], muonPz[j], antimuonEnergy[i],
+	       antimuonPx[i], antimuonPy[i], antimuonPz[i],
+	       invariantMass[i*numberOfMuons + j]);
       muonPairIndex[i*numberOfMuons + j] = i*numberOfMuons + j;
     }
   }
@@ -223,24 +209,15 @@ int pp6day2_muonanalysis() {
     int muonIndex(muonPairIndex[i] % numberOfMuons);
     int antimuonIndex((muonPairIndex[i] - muonIndex) / numberOfMuons);
 
-    std::cout << "{InvariantMass : " << invariantMass[muonPairIndex[i]]
-              << ",\n\t"
-              << "{Muon : "
-              << "Event = " << muonEventNumber[muonIndex] << ", "
-              << "(E, P) = ("
-              << muonEnergy[muonIndex] << ", "
-              << muonPx[muonIndex] << ", "
-              << muonPy[muonIndex] << ", "
-              << muonPz[muonIndex] << ")}\n\t"
-              << "{AntiMuon : "
+    std::cout << "{InvariantMass : " << invariantMass[muonPairIndex[i]] << ",\n\t"
+              << "{Muon : " << "Event = " << muonEventNumber[muonIndex] << ", "
+              << "(E, P) = (" << muonEnergy[muonIndex] << ", "
+              << muonPx[muonIndex] << ", " << muonPy[muonIndex] << ", "
+              << muonPz[muonIndex] << ")}\n\t" << "{AntiMuon : "
               << "Event = " << antimuonEventNumber[antimuonIndex] << ", "
-              << "(E, P) = ("
-              << antimuonEnergy[antimuonIndex] << ", "
-              << antimuonPx[antimuonIndex] << ", "
-              << antimuonPy[antimuonIndex] << ", "
-              << antimuonPz[antimuonIndex] << ")}\n"
-              << "}"
-              << std::endl;
+              << "(E, P) = (" << antimuonEnergy[antimuonIndex] << ", "
+              << antimuonPx[antimuonIndex] << ", " << antimuonPy[antimuonIndex] << ", "
+              << antimuonPz[antimuonIndex] << ")}\n" << "}" << std::endl;
   }
 
   delete [] muonEventNumber;

@@ -4,11 +4,14 @@
 #include "PP6ParticleInfo.hpp"
 #include "FileReader.hpp"
 
+//----------Main Code----------
+//----------=========----------
+
 ParticleInfo* ParticleInfo::theInstance = 0;
 
-const ParticleInfo& ParticleInfo::Instance( const std::string& dbFile ){
-  if( theInstance == 0 ){
-    theInstance = new ParticleInfo( dbFile );
+const ParticleInfo& ParticleInfo::Instance(const std::string& dbFile){
+  if(theInstance == 0){
+    theInstance = new ParticleInfo(dbFile);
   }
   return *theInstance;
 }
@@ -68,7 +71,7 @@ int ParticleInfo::getPDGCode(const std::string& name) const{
 
 int ParticleInfo::getCharge(const int id) const{
   std::map<int, int>::const_iterator iter = id_to_charge.find(id);
-  if (iter != id_to_charge.end()){
+  if(iter != id_to_charge.end()){
     return iter->second;
   } 
 

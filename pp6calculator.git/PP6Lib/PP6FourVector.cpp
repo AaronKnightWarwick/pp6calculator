@@ -6,6 +6,9 @@
 #include <cmath>
 #include <sstream>
 
+//----------Main Code----------
+//----------=========----------
+
 const double FourVector::c(1);
 const double FourVector::c2(1);
 
@@ -26,7 +29,7 @@ FourVector::FourVector(const double t, const ThreeVector& x) : t_(t), x_(x){
 }
 
 FourVector& FourVector::operator=(const FourVector& other){
-  if( this != &other ){
+  if(this != &other){
     t_ = other.getT();
     x_ = other.getThreeVector();
     s_ = other.interval();
@@ -89,7 +92,7 @@ double FourVector::interval() const{
 }
 
 int FourVector::boost_z(const double velocity) {
-  if( velocity >= c ){
+  if(velocity >= c){
     return 1; 
   }
 

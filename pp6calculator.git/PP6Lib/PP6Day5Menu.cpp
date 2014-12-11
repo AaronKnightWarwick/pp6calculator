@@ -26,6 +26,9 @@
 #include "PP6MomentumCut.hpp"
 #include "FileReader.hpp"
 
+//----------Main Code----------
+//----------=========----------
+
 bool initialize_database(){
   static bool dbIsUninitialized(true);
   if(dbIsUninitialized){
@@ -230,7 +233,7 @@ int pp6day5_test_dynamiccuts(){
   return 0;
 }
 
-//----------Main Code----------
+//----------Menu Code----------
 //----------=========----------
 
 void pp6day5_menu(){
@@ -275,16 +278,13 @@ void pp6day5_menu(){
     }
     
     else{
-      std::cerr << "[ERROR] Operation '" << menu5 << "' not recognised."
-                << std::endl;
+      std::cerr << "[ERROR] Operation '" << menu5 << "' not recognised." << std::endl;
       continue;
     }
 
     if(res){
-      std::cerr << "[ERROR] Operation '" << menu5 
-                << "' returned a non-zero code '" << res
-                << "'. Please check parameters."
-                << std::endl;
+      std::cerr << "[ERROR] Operation '" << menu5 << "' returned a non-zero code '" << res
+                << "'. Please check parameters."<< std::endl;
       res = 0;
       continue;
     }

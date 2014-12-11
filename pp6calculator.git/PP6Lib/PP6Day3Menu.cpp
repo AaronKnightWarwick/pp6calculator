@@ -31,7 +31,7 @@ FourVector* userCreateFourVector(){
   return createFourVector(it, ix, iy, iz);
 }
 
-//----------Main Code----------
+//----------Menu Code----------
 //----------=========----------
 
 void pp6day3_menu(){
@@ -70,7 +70,7 @@ void pp6day3_menu(){
 
     else if(menu3 == '1'){
       iV = userCreateFourVector();
-      std::cout << "[result]: interval = " << iV->interval() << std::endl;
+      std::cout << "Interval = " << iV->interval() << std::endl;
       destroyFourVector(iV);    
     }
    
@@ -82,7 +82,7 @@ void pp6day3_menu(){
 
       res = iV->boost_z(ivelocity);
       if(!res){
-        std::cout << "[result] v = " << iV->asString() << std::endl;
+        std::cout << "v = " << iV->asString() << std::endl;
         destroyFourVector(iV);
       }
     }
@@ -93,7 +93,7 @@ void pp6day3_menu(){
       std::cout << "Details for 2nd FourVector:" << std::endl;
       iU = userCreateFourVector();
       FourVector sum = (*iV) + (*iU);
-      std::cout << "[result] v = " << sum << std::endl;
+      std::cout << "v = " << sum << std::endl;
       destroyFourVector(iV);
       destroyFourVector(iU);
     }
